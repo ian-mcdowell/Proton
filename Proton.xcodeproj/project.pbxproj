@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		A407034D1CA598CC0032ED3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407034C1CA598CC0032ED3C /* AppDelegate.swift */; };
-		A407034F1CA598CC0032ED3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407034E1CA598CC0032ED3C /* ViewController.swift */; };
-		A40703521CA598CC0032ED3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A40703501CA598CC0032ED3C /* Main.storyboard */; };
+		A407034F1CA598CC0032ED3C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407034E1CA598CC0032ED3C /* Page.swift */; };
 		A40703541CA598CC0032ED3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A40703531CA598CC0032ED3C /* Assets.xcassets */; };
 		A40703571CA598CC0032ED3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A40703551CA598CC0032ED3C /* LaunchScreen.storyboard */; };
+		A407035F1CA59DEB0032ED3C /* RootPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407035E1CA59DEB0032ED3C /* RootPage.swift */; };
+		A40703611CA59E580032ED3C /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40703601CA59E580032ED3C /* Table.swift */; };
+		A40703631CA59E640032ED3C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40703621CA59E640032ED3C /* Label.swift */; };
+		A40703651CA59F460032ED3C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40703641CA59F460032ED3C /* View.swift */; };
+		A428ECB11CA9AE0800F3F39C /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428ECB01CA9AE0800F3F39C /* Stack.swift */; };
+		A428ECB31CA9BBA800F3F39C /* Proton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428ECB21CA9BBA800F3F39C /* Proton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A40703491CA598CC0032ED3C /* Proton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A407034C1CA598CC0032ED3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A407034E1CA598CC0032ED3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A40703511CA598CC0032ED3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A407034E1CA598CC0032ED3C /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		A40703531CA598CC0032ED3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A40703561CA598CC0032ED3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A40703581CA598CC0032ED3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A407035E1CA59DEB0032ED3C /* RootPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootPage.swift; sourceTree = "<group>"; };
+		A40703601CA59E580032ED3C /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		A40703621CA59E640032ED3C /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		A40703641CA59F460032ED3C /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		A428ECB01CA9AE0800F3F39C /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		A428ECB21CA9BBA800F3F39C /* Proton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +64,25 @@
 		A407034B1CA598CC0032ED3C /* Proton */ = {
 			isa = PBXGroup;
 			children = (
+				A428ECB41CA9BC6C00F3F39C /* Proton */,
 				A407034C1CA598CC0032ED3C /* AppDelegate.swift */,
-				A407034E1CA598CC0032ED3C /* ViewController.swift */,
-				A40703501CA598CC0032ED3C /* Main.storyboard */,
 				A40703531CA598CC0032ED3C /* Assets.xcassets */,
 				A40703551CA598CC0032ED3C /* LaunchScreen.storyboard */,
 				A40703581CA598CC0032ED3C /* Info.plist */,
+				A407035E1CA59DEB0032ED3C /* RootPage.swift */,
+			);
+			path = Proton;
+			sourceTree = "<group>";
+		};
+		A428ECB41CA9BC6C00F3F39C /* Proton */ = {
+			isa = PBXGroup;
+			children = (
+				A40703641CA59F460032ED3C /* View.swift */,
+				A40703601CA59E580032ED3C /* Table.swift */,
+				A40703621CA59E640032ED3C /* Label.swift */,
+				A428ECB01CA9AE0800F3F39C /* Stack.swift */,
+				A407034E1CA598CC0032ED3C /* Page.swift */,
+				A428ECB21CA9BBA800F3F39C /* Proton.swift */,
 			);
 			path = Proton;
 			sourceTree = "<group>";
@@ -124,7 +147,6 @@
 			files = (
 				A40703571CA598CC0032ED3C /* LaunchScreen.storyboard in Resources */,
 				A40703541CA598CC0032ED3C /* Assets.xcassets in Resources */,
-				A40703521CA598CC0032ED3C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +157,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A407034F1CA598CC0032ED3C /* ViewController.swift in Sources */,
+				A407034F1CA598CC0032ED3C /* Page.swift in Sources */,
+				A428ECB31CA9BBA800F3F39C /* Proton.swift in Sources */,
 				A407034D1CA598CC0032ED3C /* AppDelegate.swift in Sources */,
+				A428ECB11CA9AE0800F3F39C /* Stack.swift in Sources */,
+				A40703651CA59F460032ED3C /* View.swift in Sources */,
+				A40703611CA59E580032ED3C /* Table.swift in Sources */,
+				A40703631CA59E640032ED3C /* Label.swift in Sources */,
+				A407035F1CA59DEB0032ED3C /* RootPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A40703501CA598CC0032ED3C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A40703511CA598CC0032ED3C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A40703551CA598CC0032ED3C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -252,6 +272,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Proton/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.ianmcdowell.Proton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -263,6 +284,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Proton/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.ianmcdowell.Proton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,6 +310,7 @@
 				A407035D1CA598CC0032ED3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
