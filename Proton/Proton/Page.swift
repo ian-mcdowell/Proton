@@ -20,8 +20,8 @@ extension UIView {
 
 
 protocol Navigatable: class {
-    func push(page: Page)
-    func pop()
+    func push(page: Page, animated: Bool)
+    func pop(animated: Bool)
 }
 
 extension Navigatable {
@@ -45,18 +45,29 @@ extension Navigatable {
 }
 
 class Page: UIViewController {
+    
+    private var lastLayout: ViewHolder!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let view = self.layout().getView()
+        self.edgesForExtendedLayout = UIRectEdge.None
+        
+        lastLayout = self.layout()
+        let view = lastLayout.getView()
         self.view.addSubview(view)
         view.constrainToEdgesOfSuperview()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     func layout() -> ViewHolder {
         return View()
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

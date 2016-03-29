@@ -17,6 +17,8 @@
 		A40703651CA59F460032ED3C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40703641CA59F460032ED3C /* View.swift */; };
 		A428ECB11CA9AE0800F3F39C /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428ECB01CA9AE0800F3F39C /* Stack.swift */; };
 		A428ECB31CA9BBA800F3F39C /* Proton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428ECB21CA9BBA800F3F39C /* Proton.swift */; };
+		A428ECB61CA9BF1F00F3F39C /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428ECB51CA9BF1F00F3F39C /* SecondPage.swift */; };
+		A428ECB81CA9BF6800F3F39C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428ECB71CA9BF6800F3F39C /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		A40703641CA59F460032ED3C /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		A428ECB01CA9AE0800F3F39C /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		A428ECB21CA9BBA800F3F39C /* Proton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proton.swift; sourceTree = "<group>"; };
+		A428ECB51CA9BF1F00F3F39C /* SecondPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
+		A428ECB71CA9BF6800F3F39C /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +70,11 @@
 			children = (
 				A428ECB41CA9BC6C00F3F39C /* Proton */,
 				A407034C1CA598CC0032ED3C /* AppDelegate.swift */,
+				A407035E1CA59DEB0032ED3C /* RootPage.swift */,
+				A428ECB51CA9BF1F00F3F39C /* SecondPage.swift */,
 				A40703531CA598CC0032ED3C /* Assets.xcassets */,
 				A40703551CA598CC0032ED3C /* LaunchScreen.storyboard */,
 				A40703581CA598CC0032ED3C /* Info.plist */,
-				A407035E1CA59DEB0032ED3C /* RootPage.swift */,
 			);
 			path = Proton;
 			sourceTree = "<group>";
@@ -77,12 +82,13 @@
 		A428ECB41CA9BC6C00F3F39C /* Proton */ = {
 			isa = PBXGroup;
 			children = (
+				A428ECB21CA9BBA800F3F39C /* Proton.swift */,
+				A407034E1CA598CC0032ED3C /* Page.swift */,
 				A40703641CA59F460032ED3C /* View.swift */,
 				A40703601CA59E580032ED3C /* Table.swift */,
 				A40703621CA59E640032ED3C /* Label.swift */,
+				A428ECB71CA9BF6800F3F39C /* Button.swift */,
 				A428ECB01CA9AE0800F3F39C /* Stack.swift */,
-				A407034E1CA598CC0032ED3C /* Page.swift */,
-				A428ECB21CA9BBA800F3F39C /* Proton.swift */,
 			);
 			path = Proton;
 			sourceTree = "<group>";
@@ -162,9 +168,11 @@
 				A407034D1CA598CC0032ED3C /* AppDelegate.swift in Sources */,
 				A428ECB11CA9AE0800F3F39C /* Stack.swift in Sources */,
 				A40703651CA59F460032ED3C /* View.swift in Sources */,
+				A428ECB81CA9BF6800F3F39C /* Button.swift in Sources */,
 				A40703611CA59E580032ED3C /* Table.swift in Sources */,
 				A40703631CA59E640032ED3C /* Label.swift in Sources */,
 				A407035F1CA59DEB0032ED3C /* RootPage.swift in Sources */,
+				A428ECB61CA9BF1F00F3F39C /* SecondPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

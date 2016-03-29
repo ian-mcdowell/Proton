@@ -11,7 +11,7 @@ import UIKit
 class Label: View<UILabel> {
     
     override init() {
-
+        super.init()
     }
     
     convenience init(_ text: String) {

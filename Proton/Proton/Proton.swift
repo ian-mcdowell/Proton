@@ -15,7 +15,12 @@ class Proton: UIWindow {
         self.backgroundColor = UIColor.whiteColor()
         self.makeKeyAndVisible()
         
-        self.rootViewController = rootPage
+        // embed root navigation controller if needed.
+        if let _ = rootPage as? Navigatable {
+            self.rootViewController = UINavigationController(rootViewController: rootPage)
+        } else {
+            self.rootViewController = rootPage
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
