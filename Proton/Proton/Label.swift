@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Wrapper for UILabel, which allows easy instantiation with text, if you wish.
 class Label: View<UILabel> {
     
     override init() {

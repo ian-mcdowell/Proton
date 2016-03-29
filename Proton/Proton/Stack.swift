@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Wrapper for `UIStackView`. Allows either Vertical or Horizontal orientation of subviews.
 class Stack: View<UIStackView> {
     private var views: [ViewHolder]
     

@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// The root of a Proton application. Set the `window` property of your AppDelegate to
+/// an instance of this. 
 class Proton: UIWindow {
     
     init(rootPage: Page) {

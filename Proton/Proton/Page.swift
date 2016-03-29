@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  Page.swift
 //  Proton
 //
 //  Created by McDowell, Ian J [ITACD] on 3/25/16.
@@ -8,42 +8,8 @@
 
 import UIKit
 
-extension UIView {
-    func constrainToEdgesOfSuperview() {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.leadingAnchor.constraintEqualToAnchor(self.superview!.leadingAnchor).active = true
-        self.trailingAnchor.constraintEqualToAnchor(self.superview!.trailingAnchor).active = true
-        self.topAnchor.constraintEqualToAnchor(self.superview!.topAnchor).active = true
-        self.bottomAnchor.constraintEqualToAnchor(self.superview!.bottomAnchor).active = true
-    }
-}
-
-
-protocol Navigatable: class {
-    func push(page: Page, animated: Bool)
-    func pop(animated: Bool)
-}
-
-extension Navigatable {
-    
-    // navigatable defaults
-    func push(page: Page, animated: Bool = true) {
-        if let navController = (self as? UIViewController)?.navigationController {
-            navController.pushViewController(page, animated: animated)
-        } else {
-            print("Proton: No UINavigationController found to push the page to.")
-        }
-    }
-    
-    func pop(animated: Bool = true) {
-        if let navController = (self as? UIViewController)?.navigationController {
-            navController.popViewControllerAnimated(animated)
-        } else {
-            print("Proton: No UINavigationController found to pop from.")
-        }
-    }
-}
-
+/// Base class of each "Page" of the app, which under the hood is a UIViewController.
+/// Override the `layout` method to define it's layout.
 class Page: UIViewController {
     
     private var lastLayout: ViewHolder!
@@ -51,8 +17,13 @@ class Page: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // default background color
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        // don't extend under bars
         self.edgesForExtendedLayout = UIRectEdge.None
         
+        // perform layout
         lastLayout = self.layout()
         let view = lastLayout.getView()
         self.view.addSubview(view)

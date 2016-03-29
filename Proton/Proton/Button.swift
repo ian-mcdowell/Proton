@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Wrapper for `UIButton`, which allows easy instantiation with text and image,
+/// as well as an easy tap handler.
 class Button: View<UIButton> {
 
     override init() {

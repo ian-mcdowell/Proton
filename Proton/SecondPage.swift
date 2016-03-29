@@ -31,7 +31,9 @@ class DataModel {
     }
 }
 
-class DataModelCell: TableCellTitleSubtitle {
+
+
+class DataModelCell: TableCellTitleSubtitle, Navigatable {
     
     override class func displays(model: AnyObject) -> Bool  {
         return true
@@ -41,5 +43,10 @@ class DataModelCell: TableCellTitleSubtitle {
         let m = model as! DataModel
         self.titleLabel.text = m.title
         self.subtitleLabel.text = m.description
+    }
+    
+    override func tapped(model: AnyObject) {
+        self.deselect()
+        self.push(RootPage())
     }
 }

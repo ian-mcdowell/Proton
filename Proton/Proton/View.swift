@@ -7,10 +7,15 @@
 //
 import UIKit
 
+/// Protocol that is implemented by every view in Proton.
+/// This is used as the return type of the `layout` methods.
 protocol ViewHolder {
     func getView() -> UIView
 }
 
+
+/// Base class of View, which is a holder for a `UIView`. All other Proton views
+/// are subclasses of this.
 class View<T: UIView>: ViewHolder {
     
     var view: T = T()
