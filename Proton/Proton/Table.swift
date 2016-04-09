@@ -8,12 +8,30 @@
 
 import UIKit
 
+// Observable structure to house an array of data for use with a `Table`.
+class TableData<V: AnyObject> {
+    var value: [V] {
+        didSet {
+            table?.dataUpdated(value)
+        }
+    }
+    
+    internal var table: Table<V>?
+    
+    init() {
+        value = [V]()
+    }
+    init(_ v: [V]) {
+        value = v
+    }
+}
+
 /// Wrapper for `UITableView`, which handles all dataSource and delegate methods for you.
-class Table: View<UITableView> {
+class Table<V: AnyObject>: View<UITableView> {
     
-    private var tableManager = TableManager()
+    private var tableManager = TableManager<V>()
     
-    init(cells: [TableCell.Type]) {
+    init(cells: [TableCell<V>.Type]) {
         super.init()
         
         self.tableManager.cells = cells
@@ -21,100 +39,55 @@ class Table: View<UITableView> {
         self.view.delegate = self.tableManager
         
         for cell in cells {
-            self.view.registerClass(cell.self, forCellReuseIdentifier: NSStringFromClass(cell.self))
+            self.view.registerClass(BaseTableCell.self, forCellReuseIdentifier: NSStringFromClass(cell.self))
         }
     }
     
-    convenience init(data: [AnyObject]..., cells: [TableCell.Type]) {
+    convenience init(data: TableData<V>, cells: [TableCell<V>.Type]) {
+        self.init(cells: cells)
+        
+        data.table = self
+    }
+    
+    convenience init(data: [V]..., cells: [TableCell<V>.Type]) {
         self.init(cells: cells)
         
         tableManager.sections = data
     }
     
-    convenience init(sections: [[AnyObject]], cells: [TableCell.Type]) {
+    convenience init(sections: [[V]], cells: [TableCell<V>.Type]) {
         self.init(cells: cells)
         
         tableManager.sections = sections
     }
 
 
-}
-
-
-/// Base class for all UITableViewCells used within Proton.
-/// This allows awesome syntax and never having to use a `UITableViewDataSource`.
-class TableCell: UITableViewCell {
-    
-    /// The result of calling `layout` is stored here.
-    internal var lastLayout: ViewHolder?
-    
-    /// Tells the Table if this particular type of TableCell should display for the given model.
-    /// Careful. Only one model should only be allowed to display one type of TableCell. An error
-    /// will occur if you return true from this method multiple times per model.
-    class func displays(model: AnyObject) -> Bool {
-        fatalError("You must override the `displays` method of \(self.self)");
+    func bind(items: TableData<V>) -> Table {
+        items.table = self
+        
+        return self
     }
     
-    /// Configures the cell to display the given model. This is similar to the `cellForRowAtIndexPath`
-    /// method of the `UITableView`.
-    func configure(model: AnyObject) { }
     
-    /// Called when the cell is tapped. Override this to define behavior.
-    func tapped(model: AnyObject) { }
-    
-    /// Deselects the cell.
-    func deselect() {
-        self.setSelected(false, animated: true)
-    }
-    
-    /// Selects the cell.
-    func select() {
-        self.setSelected(true, animated: true)
-    }
-    
-    /// Returns the layout of the cell. Override this to
-    func layout() -> ViewHolder {
-        return View()
-    }
-    
-    /// Calls the layout function if needed, to put everything in motion. The layout will only
-    /// be performed once.
-    internal override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        if self.lastLayout == nil {
-            self.lastLayout = self.layout()
-            let view = self.lastLayout!.getView()
-            self.contentView.addSubview(view)
-            view.constrainToEdgesOfSuperview()
+    internal func dataUpdated(newValue: [V]) {
+        if let sections = newValue as Any as? Array<Array<V>> {
+            tableManager.sections = sections
+        } else if let items = newValue as Any as? Array<V> {
+            tableManager.sections = [items]
         }
+        
+        self.view.reloadData()
     }
+
 }
 
 
-/// Pre-defined layout of TableCell, with a title and subtitle
-class TableCellTitleSubtitle: TableCell {
-    
-    var titleLabel: UILabel!
-    var subtitleLabel: UILabel!
-    
-    override func layout() -> ViewHolder {
-        return Stack([
-            Label().assign(&titleLabel).construct{ view in
-                view.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            },
-            Label().assign(&subtitleLabel).construct{ view in
-                view.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-            }
-        ])
-    }
-    
-}
 
 
-@objc private class TableManager: NSObject, UITableViewDataSource, UITableViewDelegate {
+private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    var sections = [[AnyObject]]()
-    var cells = [TableCell.Type]()
+    var sections = [[V]]()
+    var cells = [TableCell<V>.Type]()
     
     
     @objc func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -130,22 +103,23 @@ class TableCellTitleSubtitle: TableCell {
         let model = sections[indexPath.section][indexPath.row]
         let type = getTypeOfModel(model)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(type), forIndexPath: indexPath) as! TableCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(type), forIndexPath: indexPath) as! BaseTableCell
+        cell.tableCell = type.init()
+        
         cell.layoutIfNeeded()
         
-        cell.configure(model)
+        cell.tableCell.configureObjC(model)
         
         return cell
     }
     
     
     @objc func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableCell
-        cell.tapped(sections[indexPath.section][indexPath.row])
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! BaseTableCell
+        cell.tableCell.tappedObjC(sections[indexPath.section][indexPath.row])
     }
     
-    private func getTypeOfModel(model: AnyObject) -> TableCell.Type {
+    private func getTypeOfModel(model: V) -> TableCell<V>.Type {
         for cell in cells {
             if cell.displays(model) {
                 return cell

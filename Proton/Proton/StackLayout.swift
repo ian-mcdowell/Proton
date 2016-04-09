@@ -1,5 +1,5 @@
 //
-//  Stack.swift
+//  StackLayout.swift
 //  Proton
 //
 //  Created by McDowell, Ian J [ITACD] on 3/28/16.
@@ -9,10 +9,10 @@
 import UIKit
 
 /// Wrapper for `UIStackView`. Allows either Vertical or Horizontal orientation of subviews.
-class Stack: View<UIStackView> {
-    private var views: [ViewHolder]
+class StackLayout: View<UIStackView>, Layout {
+    var views: [ProtonView]
     
-    init(_ views: [ViewHolder], direction: UILayoutConstraintAxis = .Vertical) {
+    init(_ views: [ProtonView], direction: UILayoutConstraintAxis = .Vertical) {
         self.views = views
         
         super.init()

@@ -41,7 +41,7 @@ class Collection: View<UICollectionView> {
 
 class CollectionCell: UICollectionViewCell {
     
-    internal var lastLayout: ViewHolder?
+    internal var lastLayout: ProtonView?
     
     class func displays(model: AnyObject) -> Bool {
         return false
@@ -51,7 +51,7 @@ class CollectionCell: UICollectionViewCell {
         
     }
     
-    func layout() -> ViewHolder {
+    func layout() -> ProtonView {
         return View()
     }
     
@@ -71,8 +71,8 @@ class CollectionCellTitleSubtitle: CollectionCell {
     var titleLabel: UILabel!
     var subtitleLabel: UILabel!
     
-    override func layout() -> ViewHolder {
-        return Stack([
+    override func layout() -> ProtonView {
+        return StackLayout([
             Label().assign(&titleLabel).construct{ view in
                 view.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             },

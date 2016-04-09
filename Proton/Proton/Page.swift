@@ -12,22 +12,29 @@ import UIKit
 /// Override the `layout` method to define it's layout.
 class Page: UIViewController {
     
-    private var lastLayout: ViewHolder!
+    private var lastLayout: ProtonView!
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        // perform layout
+        lastLayout = self.layout()
+        self.view = lastLayout.getView()
+        
+        self.view.backgroundColor = UIColor.whiteColor()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // default background color
-        self.view.backgroundColor = UIColor.whiteColor()
-        
         // don't extend under bars
         self.edgesForExtendedLayout = UIRectEdge.None
-        
-        // perform layout
-        lastLayout = self.layout()
-        let view = lastLayout.getView()
-        self.view.addSubview(view)
-        view.constrainToEdgesOfSuperview()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -35,8 +42,11 @@ class Page: UIViewController {
         
     }
     
-    func layout() -> ViewHolder {
-        return View()
+    
+    func layout() -> ProtonView {
+        return View().construct { view in
+            view.backgroundColor = UIColor.whiteColor()
+        }
     }
 
 
