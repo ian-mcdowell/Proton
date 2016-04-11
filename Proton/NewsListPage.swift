@@ -29,6 +29,10 @@ class NewsListPage: Page, Navigatable {
             NewsItem(title: "Image Test", description: "Asdf", image: "Image"),
             NewsItem(title: "Test 2", description: "Test 2", image: nil)
         ]
+        
+        Dispatch.delay(2) { 
+            self.items.value.append(NewsItem(title: "Test 3", description: "ASDF", image: nil))
+        }
     }
 }
 

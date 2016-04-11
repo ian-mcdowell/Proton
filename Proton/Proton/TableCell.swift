@@ -10,38 +10,42 @@ import UIKit
 
 internal class BaseTableCell: UITableViewCell {
     
-    var tableCell: TableCellObjC!
-    
-    /// The result of calling `layout` is stored here.
-    var lastLayout: ProtonView?
-    
-    /// Calls the layout function if needed, to put everything in motion. The layout will only
-    /// be performed once.
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        
-        if self.lastLayout == nil {
-            self.lastLayout = self.tableCell.layout()
+    var tableCell: TableCellObjC? {
+        willSet {
+            tableCell?.currentCell = nil
+            
+            self.lastLayout?.getView().removeFromSuperview()
+            self.lastLayout = nil
+        }
+        didSet {
+            tableCell?.currentCell = self
+            
+            self.lastLayout = self.tableCell?.layout()
             let view = self.lastLayout!.getView()
             self.contentView.addSubview(view)
             view.constrainToEdgesOfSuperview()
         }
     }
+    
+    /// The result of calling `layout` is stored here.
+    var lastLayout: ProtonView?
+    
 }
 
 internal protocol TableCellObjC {
     func layout() -> ProtonView
     func configureObjC(model: AnyObject)
     func tappedObjC(model: AnyObject)
+    var currentCell: BaseTableCell? {get set}
 }
 
 /// Base class for all UITableViewCells used within Proton.
 /// This allows awesome syntax and never having to use a `UITableViewDataSource`.
-public class TableCell<V: AnyObject>: TableCellObjC {
+public class TableCell<V: AnyObject>: ProtonView, TableCellObjC {
     
     required public init() {}
     
-    private var currentCell: BaseTableCell?
+    var currentCell: BaseTableCell?
     
     /// Tells the Table if this particular type of TableCell should display for the given model.
     /// Careful. Only one model should only be allowed to display one type of TableCell. An error
@@ -79,6 +83,12 @@ public class TableCell<V: AnyObject>: TableCellObjC {
     }
     func tappedObjC(model: AnyObject) {
         self.tapped(model as! V)
+    }
+    
+    
+    // MARK: ProtonView
+    func getView() -> UIView {
+        return self.currentCell!
     }
 }
 

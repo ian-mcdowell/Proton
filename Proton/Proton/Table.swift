@@ -108,7 +108,7 @@ private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITab
         
         cell.layoutIfNeeded()
         
-        cell.tableCell.configureObjC(model)
+        cell.tableCell?.configureObjC(model)
         
         return cell
     }
@@ -116,7 +116,7 @@ private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITab
     
     @objc func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! BaseTableCell
-        cell.tableCell.tappedObjC(sections[indexPath.section][indexPath.row])
+        cell.tableCell?.tappedObjC(sections[indexPath.section][indexPath.row])
     }
     
     private func getTypeOfModel(model: V) -> TableCell<V>.Type {

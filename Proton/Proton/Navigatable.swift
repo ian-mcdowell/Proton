@@ -40,6 +40,8 @@ extension Navigatable {
             return vc.navigationController
         } else if let view = self as? UIView {
             return view.parentViewController?.navigationController
+        } else if let viewHolder = self as? ProtonView {
+            return viewHolder.getView().parentViewController?.navigationController
         }
         return nil
     }

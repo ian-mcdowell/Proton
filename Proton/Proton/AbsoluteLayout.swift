@@ -42,7 +42,7 @@ class AbsoluteLayout: View<UIView>, Layout {
                         NSLayoutConstraint(item: uiView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: left, constant: 0).active = true
                     }
                     if let right = v.position.right {
-                        NSLayoutConstraint(item: uiView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: right, constant: 0).active = true
+                        NSLayoutConstraint(item: uiView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1 - right, constant: 0).active = true
                     }
                     break
                 case .Absolute:
@@ -68,7 +68,7 @@ class AbsoluteLayout: View<UIView>, Layout {
                         NSLayoutConstraint(item: uiView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: top, constant: 0).active = true
                     }
                     if let bottom = v.position.bottom {
-                        NSLayoutConstraint(item: uiView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: bottom, constant: 0).active = true
+                        NSLayoutConstraint(item: uiView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1 - bottom, constant: 0).active = true
                     }
                     break
                 case .Absolute:
@@ -97,10 +97,10 @@ class AbsoluteLayout: View<UIView>, Layout {
                 break
             case .Fixed:
                 if let width = v.size.width {
-                    NSLayoutConstraint(item: uiView, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1, constant: width).active = true
+                    NSLayoutConstraint(item: uiView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: width).active = true
                 }
                 if let height = v.size.height {
-                    NSLayoutConstraint(item: uiView, attribute: .Height, relatedBy: .Equal, toItem: self.view, attribute: .Height, multiplier: 1, constant: height).active = true
+                    NSLayoutConstraint(item: uiView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: height).active = true
                 }
                 break
             case .None:
