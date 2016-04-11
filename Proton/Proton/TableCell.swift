@@ -47,7 +47,7 @@ public class TableCell<V: AnyObject>: TableCellObjC {
     /// Careful. Only one model should only be allowed to display one type of TableCell. An error
     /// will occur if you return true from this method multiple times per model.
     class func displays(model: V) -> Bool {
-        fatalError("You must override the `displays` method of \(self.self)");
+        return true
     }
     
     /// Configures the cell to display the given model. This is similar to the `cellForRowAtIndexPath`
@@ -99,7 +99,7 @@ public class TableCellTitleSubtitle<V: AnyObject>: TableCell<V> {
             Label().assign(&subtitleLabel).construct{ view in
                 view.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
             }
-            ])
+        ])
     }
     
 }

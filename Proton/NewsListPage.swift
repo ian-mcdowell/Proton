@@ -12,7 +12,7 @@ class NewsListPage: Page, Navigatable {
     private var items = TableData<NewsItem>()
 
     override func layout() -> ProtonView {
-        return Table(data: items, cells: [NewsItemCell.self])
+        return Table(data: items, cells: [NewsItemCell.self, NewsItemImageCell.self])
     }
     
     override func viewDidLoad() {
@@ -25,8 +25,9 @@ class NewsListPage: Page, Navigatable {
     
     private func loadItems() {
         self.items.value = [
-            NewsItem(title: "Test", description: "Test"),
-            NewsItem(title: "Test 2", description: "Test 2")
+            NewsItem(title: "Test", description: "Test", image: nil),
+            NewsItem(title: "Image Test", description: "Asdf", image: "Image"),
+            NewsItem(title: "Test 2", description: "Test 2", image: nil)
         ]
     }
 }
@@ -34,13 +35,27 @@ class NewsListPage: Page, Navigatable {
 class NewsItem {
     var title: String
     var description: String
+    var image: String?
     
-    init(title: String, description: String) {
+    init(title: String, description: String, image: String?) {
         self.title = title
         self.description = description
+        self.image = image
     }
 }
 
+private class NewsItemImageCell: TableCell<NewsItem>, Navigatable {
+    
+    required init() { }
+    
+    override class func displays(model: NewsItem) -> Bool {
+        return model.image != nil
+    }
+    
+    override func configure(model: NewsItem) {
+        
+    }
+}
 
 
 private class NewsItemCell: TableCellTitleSubtitle<NewsItem>, Navigatable {
@@ -48,7 +63,7 @@ private class NewsItemCell: TableCellTitleSubtitle<NewsItem>, Navigatable {
     required init() {}
     
     override class func displays(model: NewsItem) -> Bool  {
-        return true
+        return model.image == nil
     }
     
     override func configure(model: NewsItem) {

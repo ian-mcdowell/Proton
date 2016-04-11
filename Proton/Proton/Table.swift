@@ -31,7 +31,7 @@ class Table<V: AnyObject>: View<UITableView> {
     
     private var tableManager = TableManager<V>()
     
-    init(cells: [TableCell<V>.Type]) {
+    init(cells: [AnyClass]) {
         super.init()
         
         self.tableManager.cells = cells
@@ -43,19 +43,19 @@ class Table<V: AnyObject>: View<UITableView> {
         }
     }
     
-    convenience init(data: TableData<V>, cells: [TableCell<V>.Type]) {
+    convenience init(data: TableData<V>, cells: [AnyClass]) {
         self.init(cells: cells)
         
         data.table = self
     }
     
-    convenience init(data: [V]..., cells: [TableCell<V>.Type]) {
+    convenience init(data: [V]..., cells: [AnyClass]) {
         self.init(cells: cells)
         
         tableManager.sections = data
     }
     
-    convenience init(sections: [[V]], cells: [TableCell<V>.Type]) {
+    convenience init(sections: [[V]], cells: [AnyClass]) {
         self.init(cells: cells)
         
         tableManager.sections = sections
@@ -87,7 +87,7 @@ class Table<V: AnyObject>: View<UITableView> {
 private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var sections = [[V]]()
-    var cells = [TableCell<V>.Type]()
+    var cells = [AnyClass]()
     
     
     @objc func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -120,11 +120,21 @@ private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITab
     }
     
     private func getTypeOfModel(model: V) -> TableCell<V>.Type {
+        var foundCount = 0
+        var type: TableCell<V>.Type? = nil
         for cell in cells {
-            if cell.displays(model) {
-                return cell
+            if let thisType = cell as? TableCell<V>.Type {
+                if thisType.displays(model) {
+                    foundCount = foundCount + 1
+                    type = thisType
+                }
             }
         }
-        fatalError("No cell type provided to the Table is able to display model of type: \(model.self). Make sure you are implementing the 'displays(model) -> Bool' method of your TableCell")
+        if foundCount == 0 {
+            fatalError("No cell type provided to the Table is able to display model of type: \(model.self). Make sure you are implementing the 'displays(model) -> Bool' method of your TableCell")
+        } else if foundCount > 1 {
+            fatalError("Multiple cell types provided to the Table are able to display model of type: \(model.self). Make sure you are returning true only once per model from the 'displays(model) -> Bool' method of your TableCell")
+        }
+        return type!
     }
 }
