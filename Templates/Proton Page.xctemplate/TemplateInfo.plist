@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Kind</key>
+	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+	<key>Description</key>
+	<string>A Proton Page class.</string>
+	<key>Summary</key>
+	<string>A Proton Page class</string>
+	<key>SortOrder</key>
+	<string>8</string>
+	<key>DefaultCompletionName</key>
+	<string>MyClass</string>
+	<key>Platforms</key>
+	<array>
+		<string>com.apple.platform.iphoneos</string>
+	</array>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Required</key>
+			<true/>
+			<key>Name</key>
+			<string>Class Name:</string>
+			<key>Description</key>
+			<string>The name of the page to create</string>
+			<key>Type</key>
+			<string>text</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>layoutType</string>
+			<key>Required</key>
+			<string>YES</string>
+			<key>Name</key>
+			<string>Layout:</string>
+			<key>Description</key>
+			<string>What view to put in the layout method</string>
+			<key>Type</key>
+			<string>class</string>
+			<key>Default</key>
+			<string>StackLayout</string>
+			<key>FallbackHeader</key>
+			<string>#import &lt;Proton/Proton.h&gt;</string>
+			<key>Values</key>
+			<array>
+				<string>StackLayout</string>
+				<string>Table</string>
+			</array>
+			<key>Suffixes</key>
+			<dict/>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>CELL</string>
+			<key>Name</key>
+			<string>Also create Cell file</string>
+			<key>Description</key>
+			<string>Whether to create a Cell file for the Table or Collection</string>
+			<key>Type</key>
+			<string>checkbox</string>
+			<key>RequiredOptions</key>
+			<dict>
+				<key>layoutType</key>
+				<array>
+					<string>Table</string>
+					<string>Collection</string>
+				</array>
+			</dict>
+			<key>Default</key>
+			<string>false</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+	</array>
+</dict>
+</plist>
