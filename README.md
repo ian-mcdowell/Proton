@@ -1,6 +1,6 @@
 # Proton
 
-[![CI Status](http://img.shields.io/travis/wdmcdowell/Proton.svg?style=flat)](https://travis-ci.org/wdmcdowell/Proton)
+[![CI Status](http://img.shields.io/travis/IMcD23/Proton.svg?style=flat)](https://travis-ci.org/IMcD23/Proton)
 [![Version](https://img.shields.io/cocoapods/v/Proton.svg?style=flat)](http://cocoapods.org/pods/Proton)
 [![License](https://img.shields.io/cocoapods/l/Proton.svg?style=flat)](http://cocoapods.org/pods/Proton)
 [![Platform](https://img.shields.io/cocoapods/p/Proton.svg?style=flat)](http://cocoapods.org/pods/Proton)

@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Proton
 //
-//  Created by wdmcdowell on 04/11/2016.
-//  Copyright (c) 2016 wdmcdowell. All rights reserved.
+//  Created by Ian McDowell on 04/11/2016.
+//  Copyright (c) 2016 Ian McDowell. All rights reserved.
 //
 
 import Proton
