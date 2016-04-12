@@ -167,6 +167,10 @@ private class TableManager<V: Any>: NSObject, UITableViewDataSource, UITableView
         cell.tableCell?.tappedObjC(sections[indexPath.section].items[indexPath.row])
     }
     
+    @objc func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
+    }
+    
     private func getTypeOfModel(model: V) -> TableCell<V>.Type {
         var foundCount = 0
         var type: TableCell<V>.Type? = nil

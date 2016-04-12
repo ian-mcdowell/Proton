@@ -9,17 +9,24 @@
 import UIKit
 
 /// Wrapper for `UIStackView`. Allows either Vertical or Horizontal orientation of subviews.
-public class StackLayout: View<UIStackView>, Layout {
+public class StackLayout: View<UIView>, Layout {
     var views: [ProtonView]
+    
+    private var stackView: UIStackView!
     
     public init(_ views: [ProtonView], direction: UILayoutConstraintAxis = .Vertical, distribution: UIStackViewDistribution = .Fill) {
         self.views = views
         
         super.init()
         
-        self.view = UIStackView(arrangedSubviews: self.uiViews())
-        self.view.axis = direction
-        self.view.distribution = distribution
+        stackView = UIStackView(arrangedSubviews: self.uiViews())
+        stackView.axis = direction
+        stackView.distribution = distribution
+        
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.view.addSubview(stackView)
+        stackView.constrainToEdgesOfSuperview()
         
         // add width and height constraints
         for view in self.views {

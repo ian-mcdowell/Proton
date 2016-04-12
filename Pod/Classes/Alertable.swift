@@ -18,11 +18,11 @@ public protocol Alertable: class {
 public extension Alertable {
     
   
-    func alert(title title: String?, message: String?, actions: [UIAlertAction]) {
+    func alert(title title: String? = nil, message: String? = nil, actions: [UIAlertAction]) {
         self.showAlert(title, message: message, style: .Alert, actions: actions)
     }
     
-    func actionSheet(title title: String?, message: String?, actions: [UIAlertAction]) {
+    func actionSheet(title title: String? = nil, message: String? = nil, actions: [UIAlertAction]) {
         self.showAlert(title, message: message, style: .ActionSheet, actions: actions)
     }
     
@@ -53,11 +53,8 @@ public extension Alertable {
 
 
 public extension UIAlertAction {
-    convenience init(title: String) {
-        self.init(title: title, style: .Default, handler: nil)
-    }
     
-    convenience init(title: String, style: UIAlertActionStyle) {
+    convenience init(title: String? = nil, style: UIAlertActionStyle = .Default) {
         self.init(title: title, style: style, handler: nil)
     }
 }

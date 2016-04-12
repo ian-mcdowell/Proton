@@ -18,6 +18,8 @@ public class AbsoluteLayout: View<UIView>, Layout {
         
         super.init()
         
+        self.view.backgroundColor = UIColor.whiteColor()
+        
         for view in views {
             let uiView = view.getView()
             self.view.addSubview(uiView)

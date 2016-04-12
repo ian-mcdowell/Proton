@@ -11,8 +11,12 @@ import Proton
 class HomePage: Page, Navigatable {
     
     private var items = TableData<ListItem>([
-        ListItem(title: "WebView", page: WebViewPage.self),
-        ListItem(title: "Alert", page: AlertPage.self)
+        ListItem(title: "ActivityIndicator", subtitle: "ActivityIndicatorPage", page: ActivityIndicatorPage.self),
+        ListItem(title: "Alert", subtitle: "AlertPage", page: AlertPage.self),
+        ListItem(title: "Button", subtitle: "ButtonPage", page: ButtonPage.self),
+        ListItem(title: "DatePicker", subtitle: "DatePickerPage", page: DatePickerPage.self),
+        ListItem(title: "ImageView", subtitle: "ImageViewPage", page: ImageViewPage.self),
+        ListItem(title: "WebView", subtitle: "WebViewPage", page: WebViewPage.self)
     ])
 
     override func layout() -> ProtonView {
@@ -28,6 +32,7 @@ class HomePage: Page, Navigatable {
 
 private struct ListItem {
     var title: String
+    var subtitle: String
     var page: Page.Type
 }
 
@@ -37,7 +42,7 @@ private class ListItemCell: TableCellTitleSubtitle<ListItem>, Navigatable {
     
     override func configure(model: ListItem) {
         self.titleLabel.text = model.title
-//        self.subtitleLabel.text = 
+        self.subtitleLabel.text = model.subtitle
     }
     
     override func tapped(model: ListItem) {

@@ -22,7 +22,7 @@ class AlertPage: Page, Alertable {
         self.title = "Alert"
         
         self.items.value = [
-            TableSection([
+            TableSection(title: "Alert Style", [
                 AlertItem(title: "Simple", action: {
                     self.alert(
                         title: "A Short Title is Best",
@@ -50,9 +50,31 @@ class AlertPage: Page, Alertable {
                             UIAlertAction(title: "Cancel", style: .Cancel)
                         ]
                     )
+                }),
+                AlertItem(title: "Text Entry", action: {
+                }),
+                AlertItem(title: "Secure Text Entry", action: {
                 })
             ]),
-            TableSection([
+            TableSection(title: "Action Sheet Style", [
+                AlertItem(title: "Okay / Cancel", action: {
+                    self.actionSheet(
+                        actions: [
+                            UIAlertAction(title: "OK"),
+                            UIAlertAction(title: "Cancel", style: .Cancel)
+                        ]
+                    )
+                }),
+                AlertItem(title: "Other", action: {
+                    self.actionSheet(
+                        title: "A Short Title is Best",
+                        message: "A message should be a short, complete sentence.",
+                        actions: [
+                            UIAlertAction(title: "Destructive Choice", style: .Destructive),
+                            UIAlertAction(title: "Safe Choice", style: .Default)
+                        ]
+                    )
+                })
             ])
         ]
     }
@@ -64,7 +86,7 @@ private struct AlertItem {
     var action: () -> Void
 }
 
-private class AlertItemCell: TableCellTitle<AlertItem>, Navigatable {
+private class AlertItemCell: TableCellTitle<AlertItem> {
     
     required init() {}
     

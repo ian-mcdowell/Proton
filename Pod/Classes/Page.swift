@@ -26,8 +26,6 @@ public class Page: UIViewController {
         // perform layout
         lastLayout = self.layout()
         self.view = lastLayout.getView()
-        
-        self.view.backgroundColor = UIColor.whiteColor()
     }
 
     override public func viewDidLoad() {

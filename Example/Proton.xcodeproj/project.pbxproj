@@ -12,6 +12,10 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		92FF4DCCDDA89ADB97554B83 /* Pods_Proton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DAFEB45ECB7D96B9785244 /* Pods_Proton_Example.framework */; };
+		A40229471CBDA4B60037C628 /* ButtonPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40229461CBDA4B60037C628 /* ButtonPage.swift */; };
+		A40229491CBDAB910037C628 /* DatePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40229481CBDAB910037C628 /* DatePickerPage.swift */; };
+		A402294E1CBDB0860037C628 /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A402294D1CBDB0860037C628 /* ImageViewPage.swift */; };
+		A40229521CBDB20C0037C628 /* ActivityIndicatorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40229511CBDB20C0037C628 /* ActivityIndicatorPage.swift */; };
 		A4E0E1FE1CBC3F31005E1D8D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FB1CBC3F31005E1D8D /* HomePage.swift */; };
 		A4E0E1FF1CBC3F31005E1D8D /* AlertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FC1CBC3F31005E1D8D /* AlertPage.swift */; };
 		A4E0E2001CBC3F31005E1D8D /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */; };
@@ -43,6 +47,10 @@
 		672B9C48D05929AF2E268EED /* Pods-Proton_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Example/Pods-Proton_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6C27DB9214CC1B24792A33EF /* Pods-Proton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Tests/Pods-Proton_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8A4AC918578EEC0418FE0E29 /* Pods-Proton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Tests/Pods-Proton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A40229461CBDA4B60037C628 /* ButtonPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPage.swift; sourceTree = "<group>"; };
+		A40229481CBDAB910037C628 /* DatePickerPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPage.swift; sourceTree = "<group>"; };
+		A402294D1CBDB0860037C628 /* ImageViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
+		A40229511CBDB20C0037C628 /* ActivityIndicatorPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorPage.swift; sourceTree = "<group>"; };
 		A4E0E1FB1CBC3F31005E1D8D /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		A4E0E1FC1CBC3F31005E1D8D /* AlertPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPage.swift; sourceTree = "<group>"; };
 		A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
@@ -104,10 +112,9 @@
 		607FACD21AFB9204008FA782 /* Example for Proton */ = {
 			isa = PBXGroup;
 			children = (
+				A402294C1CBDAD990037C628 /* Pages */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				A4E0E1FB1CBC3F31005E1D8D /* HomePage.swift */,
-				A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */,
-				A4E0E1FC1CBC3F31005E1D8D /* AlertPage.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -160,6 +167,19 @@
 				6C27DB9214CC1B24792A33EF /* Pods-Proton_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A402294C1CBDAD990037C628 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				A40229511CBDB20C0037C628 /* ActivityIndicatorPage.swift */,
+				A4E0E1FC1CBC3F31005E1D8D /* AlertPage.swift */,
+				A40229461CBDA4B60037C628 /* ButtonPage.swift */,
+				A40229481CBDAB910037C628 /* DatePickerPage.swift */,
+				A402294D1CBDB0860037C628 /* ImageViewPage.swift */,
+				A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +383,10 @@
 			files = (
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				A4E0E1FE1CBC3F31005E1D8D /* HomePage.swift in Sources */,
+				A402294E1CBDB0860037C628 /* ImageViewPage.swift in Sources */,
+				A40229491CBDAB910037C628 /* DatePickerPage.swift in Sources */,
+				A40229471CBDA4B60037C628 /* ButtonPage.swift in Sources */,
+				A40229521CBDB20C0037C628 /* ActivityIndicatorPage.swift in Sources */,
 				A4E0E2001CBC3F31005E1D8D /* WebViewPage.swift in Sources */,
 				A4E0E1FF1CBC3F31005E1D8D /* AlertPage.swift in Sources */,
 			);

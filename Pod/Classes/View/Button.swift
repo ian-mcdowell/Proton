@@ -16,6 +16,11 @@ public class Button: View<UIButton> {
         super.init()
     }
     
+    public init(type type: UIButtonType) {
+        super.init()
+        view = UIButton(type: type)
+    }
+    
     public convenience init(text: String?, image: UIImage?) {
         self.init()
         view.setTitle(text, forState: .Normal)
@@ -23,11 +28,11 @@ public class Button: View<UIButton> {
         view.setTitleColor(UIColor.blackColor(), forState: .Normal)
     }
     
-    public convenience init(_ text: String) {
+    public convenience init(_ text: String?) {
         self.init(text: text, image: nil)
     }
     
-    public convenience init(_ image: UIImage) {
+    public convenience init(_ image: UIImage?) {
         self.init(text: nil, image: image)
     }
     
