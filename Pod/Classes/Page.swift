@@ -14,7 +14,7 @@ public class Page: UIViewController {
     
     private var lastLayout: ProtonView!
     
-    public init() {
+    required public init() {
         super.init(nibName: nil, bundle: nil)
     }
     

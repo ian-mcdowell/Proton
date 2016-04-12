@@ -12,9 +12,9 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		92FF4DCCDDA89ADB97554B83 /* Pods_Proton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22DAFEB45ECB7D96B9785244 /* Pods_Proton_Example.framework */; };
-		A4E0E1FE1CBC3F31005E1D8D /* NewsListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FB1CBC3F31005E1D8D /* NewsListPage.swift */; };
-		A4E0E1FF1CBC3F31005E1D8D /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FC1CBC3F31005E1D8D /* SecondPage.swift */; };
-		A4E0E2001CBC3F31005E1D8D /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FD1CBC3F31005E1D8D /* ThirdPage.swift */; };
+		A4E0E1FE1CBC3F31005E1D8D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FB1CBC3F31005E1D8D /* HomePage.swift */; };
+		A4E0E1FF1CBC3F31005E1D8D /* AlertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FC1CBC3F31005E1D8D /* AlertPage.swift */; };
+		A4E0E2001CBC3F31005E1D8D /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */; };
 		B065E81408BEC6A234F5E887 /* Pods_Proton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBD0DDD94E96DBCE30C58D7 /* Pods_Proton_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,7 @@
 		22DAFEB45ECB7D96B9785244 /* Pods_Proton_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proton_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24CA08D14B68E24BDDE8DCEA /* Proton.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Proton.podspec; path = ../Proton.podspec; sourceTree = "<group>"; };
 		374F0118B53CDCB789AD5B91 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		607FACD01AFB9204008FA782 /* Proton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACD01AFB9204008FA782 /* Proton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -43,9 +43,9 @@
 		672B9C48D05929AF2E268EED /* Pods-Proton_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Example/Pods-Proton_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6C27DB9214CC1B24792A33EF /* Pods-Proton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Tests/Pods-Proton_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8A4AC918578EEC0418FE0E29 /* Pods-Proton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Tests/Pods-Proton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A4E0E1FB1CBC3F31005E1D8D /* NewsListPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListPage.swift; sourceTree = "<group>"; };
-		A4E0E1FC1CBC3F31005E1D8D /* SecondPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
-		A4E0E1FD1CBC3F31005E1D8D /* ThirdPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
+		A4E0E1FB1CBC3F31005E1D8D /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		A4E0E1FC1CBC3F31005E1D8D /* AlertPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPage.swift; sourceTree = "<group>"; };
+		A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
 		BBEB7F80BFD14F9436C2868F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BFBD0DDD94E96DBCE30C58D7 /* Pods_Proton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B9814A15DD3628844BC1CC /* Pods-Proton_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Example/Pods-Proton_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		607FACD11AFB9204008FA782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD01AFB9204008FA782 /* Proton_Example.app */,
+				607FACD01AFB9204008FA782 /* Proton.app */,
 				607FACE51AFB9204008FA782 /* Proton_Tests.xctest */,
 			);
 			name = Products;
@@ -105,9 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				A4E0E1FB1CBC3F31005E1D8D /* NewsListPage.swift */,
-				A4E0E1FC1CBC3F31005E1D8D /* SecondPage.swift */,
-				A4E0E1FD1CBC3F31005E1D8D /* ThirdPage.swift */,
+				A4E0E1FB1CBC3F31005E1D8D /* HomePage.swift */,
+				A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */,
+				A4E0E1FC1CBC3F31005E1D8D /* AlertPage.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -182,7 +182,7 @@
 			);
 			name = Proton_Example;
 			productName = Proton;
-			productReference = 607FACD01AFB9204008FA782 /* Proton_Example.app */;
+			productReference = 607FACD01AFB9204008FA782 /* Proton.app */;
 			productType = "com.apple.product-type.application";
 		};
 		607FACE41AFB9204008FA782 /* Proton_Tests */ = {
@@ -362,9 +362,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				A4E0E1FE1CBC3F31005E1D8D /* NewsListPage.swift in Sources */,
-				A4E0E2001CBC3F31005E1D8D /* ThirdPage.swift in Sources */,
-				A4E0E1FF1CBC3F31005E1D8D /* SecondPage.swift in Sources */,
+				A4E0E1FE1CBC3F31005E1D8D /* HomePage.swift in Sources */,
+				A4E0E2001CBC3F31005E1D8D /* WebViewPage.swift in Sources */,
+				A4E0E1FF1CBC3F31005E1D8D /* AlertPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +490,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = Proton_Example;
+				PRODUCT_NAME = Proton;
 			};
 			name = Debug;
 		};
@@ -504,7 +505,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = Proton_Example;
+				PRODUCT_NAME = Proton;
 			};
 			name = Release;
 		};

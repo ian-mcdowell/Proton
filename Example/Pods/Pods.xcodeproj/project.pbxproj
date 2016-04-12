@@ -89,6 +89,10 @@
 		A2CABD326609AD67377700A148785E09 /* BeAnInstanceOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D583345A544DBE4373F3BB917431FFAF /* BeAnInstanceOf.swift */; };
 		A374A2729E32469085C5025EC7115EB8 /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249D2638D0070442D0D750885D075640 /* Stringers.swift */; };
 		A38506CF4700DA06E89C871D8388D83E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824E7E4508E1A8CC3DDFF89F639AA1A3 /* UIKit.framework */; };
+		A4A4A4721CBC64A800BD1503 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A4A4711CBC64A800BD1503 /* WebView.swift */; };
+		A4A4A4741CBC656300BD1503 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A4A4731CBC656300BD1503 /* Input.swift */; };
+		A4A4A4761CBC696200BD1503 /* Hairline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A4A4751CBC696200BD1503 /* Hairline.swift */; };
+		A4A4A47A1CBC7A6500BD1503 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A4A4791CBC7A6500BD1503 /* Alertable.swift */; };
 		A4E0E1EB1CBC3D35005E1D8D /* AbsoluteLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1DA1CBC3D35005E1D8D /* AbsoluteLayout.swift */; };
 		A4E0E1EC1CBC3D35005E1D8D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1DB1CBC3D35005E1D8D /* Layout.swift */; };
 		A4E0E1ED1CBC3D35005E1D8D /* StackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1DC1CBC3D35005E1D8D /* StackLayout.swift */; };
@@ -321,6 +325,10 @@
 		A1F8B8308864A130D630110C7734744E /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
 		A1F915F8C8679193EEFD293EC4CCA6C6 /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
 		A3CA32EF259C8A96497B5F2DBCBF45AC /* Proton.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Proton.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A4A4711CBC64A800BD1503 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		A4A4A4731CBC656300BD1503 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		A4A4A4751CBC696200BD1503 /* Hairline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hairline.swift; sourceTree = "<group>"; };
+		A4A4A4791CBC7A6500BD1503 /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		A4E0E1DA1CBC3D35005E1D8D /* AbsoluteLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsoluteLayout.swift; sourceTree = "<group>"; };
 		A4E0E1DB1CBC3D35005E1D8D /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		A4E0E1DC1CBC3D35005E1D8D /* StackLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackLayout.swift; sourceTree = "<group>"; };
@@ -635,6 +643,7 @@
 			children = (
 				A4E0E1D91CBC3D35005E1D8D /* Layout */,
 				A4E0E1DD1CBC3D35005E1D8D /* Navigatable.swift */,
+				A4A4A4791CBC7A6500BD1503 /* Alertable.swift */,
 				A4E0E1DE1CBC3D35005E1D8D /* Page.swift */,
 				A4E0E1DF1CBC3D35005E1D8D /* Percent.swift */,
 				A4E0E1E01CBC3D35005E1D8D /* Proton.swift */,
@@ -785,14 +794,17 @@
 		A4E0E1E21CBC3D35005E1D8D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A4A4A4731CBC656300BD1503 /* Input.swift */,
 				A4E0E1E31CBC3D35005E1D8D /* Button.swift */,
 				A4E0E1E41CBC3D35005E1D8D /* Collection.swift */,
 				A4E0E1E51CBC3D35005E1D8D /* Label.swift */,
 				A4E0E1E61CBC3D35005E1D8D /* Table.swift */,
 				A4E0E1E71CBC3D35005E1D8D /* TableCell.swift */,
+				A4A4A4711CBC64A800BD1503 /* WebView.swift */,
 				A4E0E1E81CBC3D35005E1D8D /* View+Position.swift */,
 				A4E0E1E91CBC3D35005E1D8D /* View+Size.swift */,
 				A4E0E1EA1CBC3D35005E1D8D /* View.swift */,
+				A4A4A4751CBC696200BD1503 /* Hairline.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1152,14 +1164,18 @@
 				A4E0E1FA1CBC3D35005E1D8D /* View.swift in Sources */,
 				A4E0E1ED1CBC3D35005E1D8D /* StackLayout.swift in Sources */,
 				A4E0E1EF1CBC3D35005E1D8D /* Page.swift in Sources */,
+				A4A4A4741CBC656300BD1503 /* Input.swift in Sources */,
 				A4E0E1F31CBC3D35005E1D8D /* Button.swift in Sources */,
+				A4A4A4761CBC696200BD1503 /* Hairline.swift in Sources */,
 				A4E0E1F21CBC3D35005E1D8D /* UIView+Proton.swift in Sources */,
 				A4E0E1F41CBC3D35005E1D8D /* Collection.swift in Sources */,
 				A4E0E1F81CBC3D35005E1D8D /* View+Position.swift in Sources */,
 				A4E0E1F61CBC3D35005E1D8D /* Table.swift in Sources */,
 				A4E0E1F91CBC3D35005E1D8D /* View+Size.swift in Sources */,
+				A4A4A47A1CBC7A6500BD1503 /* Alertable.swift in Sources */,
 				A4E0E1F71CBC3D35005E1D8D /* TableCell.swift in Sources */,
 				A4E0E1EB1CBC3D35005E1D8D /* AbsoluteLayout.swift in Sources */,
+				A4A4A4721CBC64A800BD1503 /* WebView.swift in Sources */,
 				E38B8D951DE61B3413A16CEA1D4CF96C /* Proton-dummy.m in Sources */,
 				A4E0E1EC1CBC3D35005E1D8D /* Layout.swift in Sources */,
 			);

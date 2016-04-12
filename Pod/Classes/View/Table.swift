@@ -9,30 +9,70 @@
 import UIKit
 
 // Observable structure to house an array of data for use with a `Table`.
-public class TableData<V: AnyObject> {
-    public var value: [V] {
+public class TableData<T: Any> {
+    public var value: [T] {
         didSet {
             table?.dataUpdated(value)
         }
     }
     
-    internal var table: Table<V>?
+    internal var table: Table<T>? {
+        didSet {
+            table?.dataUpdated(value)
+        }
+    }
     
     public init() {
-        value = [V]()
+        value = [T]()
     }
-    public init(_ v: [V]) {
+    public init(_ v: [T]) {
+        value = v
+    }
+}
+
+public struct TableSection<T: Any> {
+    public var title: String? = nil
+    public var items = [T]()
+    
+    public init(_ items: [T] = [T](), title: String? = nil) {
+        self.title = title
+        self.items = items
+    }
+}
+
+// Observable structure to house an array of arrays of data for use with a sectioned `Table`.
+public class SectionedTableData<T: Any> {
+    public var value: [TableSection<T>] {
+        didSet {
+            table?.dataUpdated(value)
+        }
+    }
+    
+    internal var table: Table<T>? {
+        didSet {
+            table?.dataUpdated(value)
+        }
+    }
+    
+    public init() {
+        value = [TableSection<T>]()
+    }
+    public init(_ v: [TableSection<T>]) {
         value = v
     }
 }
 
 /// Wrapper for `UITableView`, which handles all dataSource and delegate methods for you.
-public class Table<V: AnyObject>: View<UITableView> {
+public class Table<V: Any>: View<UITableView> {
     
     private var tableManager = TableManager<V>()
     
-    public init(cells: [AnyClass]) {
+    public init(cells: [AnyClass], style: UITableViewStyle = .Plain) {
         super.init()
+        
+        if style != .Plain {
+            self.view = UITableView(frame: CGRectZero, style: style)
+        }
         
         self.tableManager.cells = cells
         self.view.dataSource = self.tableManager
@@ -43,26 +83,32 @@ public class Table<V: AnyObject>: View<UITableView> {
         }
     }
     
-    public convenience init(data: TableData<V>, cells: [AnyClass]) {
-        self.init(cells: cells)
+    public convenience init(data: TableData<V>, cells: [AnyClass], style: UITableViewStyle = .Plain) {
+        self.init(cells: cells, style: style)
         
         data.table = self
     }
     
-    public convenience init(data: [V]..., cells: [AnyClass]) {
-        self.init(cells: cells)
+    public convenience init(data: SectionedTableData<V>, cells: [AnyClass], style: UITableViewStyle = .Plain) {
+        self.init(cells: cells, style: style)
         
-        tableManager.sections = data
+        data.table = self
     }
     
-    public convenience init(sections: [[V]], cells: [AnyClass]) {
-        self.init(cells: cells)
+    public convenience init(data: [V], cells: [AnyClass], style: UITableViewStyle = .Plain) {
+        self.init(cells: cells, style: style)
+        
+        tableManager.sections = [TableSection(data)]
+    }
+    
+    public convenience init(sections: [TableSection<V>], cells: [AnyClass], style: UITableViewStyle = .Plain) {
+        self.init(cells: cells, style: style)
         
         tableManager.sections = sections
     }
 
 
-    public func bind(items: TableData<V>) -> Table {
+    public func bind(items: TableData<V>) -> Self {
         items.table = self
         
         return self
@@ -70,11 +116,13 @@ public class Table<V: AnyObject>: View<UITableView> {
     
     
     internal func dataUpdated(newValue: [V]) {
-        if let sections = newValue as Any as? Array<Array<V>> {
-            tableManager.sections = sections
-        } else if let items = newValue as Any as? Array<V> {
-            tableManager.sections = [items]
-        }
+        tableManager.sections = [TableSection(newValue)]
+        
+        self.view.reloadData()
+    }
+    
+    internal func dataUpdated(newValue: [TableSection<V>]) {
+        tableManager.sections = newValue
         
         self.view.reloadData()
     }
@@ -84,9 +132,9 @@ public class Table<V: AnyObject>: View<UITableView> {
 
 
 
-private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITableViewDelegate {
+private class TableManager<V: Any>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    var sections = [[V]]()
+    var sections = [TableSection<V>]()
     var cells = [AnyClass]()
     
     
@@ -95,12 +143,12 @@ private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITab
     }
     
     @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].count
+        return sections[section].items.count
     }
     
     @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let model = sections[indexPath.section][indexPath.row]
+        let model = sections[indexPath.section].items[indexPath.row]
         let type = getTypeOfModel(model)
         
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(type), forIndexPath: indexPath) as! BaseTableCell
@@ -116,7 +164,7 @@ private class TableManager<V: AnyObject>: NSObject, UITableViewDataSource, UITab
     
     @objc func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! BaseTableCell
-        cell.tableCell?.tappedObjC(sections[indexPath.section][indexPath.row])
+        cell.tableCell?.tappedObjC(sections[indexPath.section].items[indexPath.row])
     }
     
     private func getTypeOfModel(model: V) -> TableCell<V>.Type {

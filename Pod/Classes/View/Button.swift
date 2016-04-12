@@ -32,9 +32,9 @@ public class Button: View<UIButton> {
     }
     
     
-    public override func tapped(fn: () -> Void) -> Button {
-        self.clickHandler.tapAction = fn
-        self.view.addTarget(self.clickHandler, action: #selector(self.clickHandler.handleTap), forControlEvents: .TouchUpInside)
+    public override func onTap(fn: () -> Void) -> Self {
+        self.clickHandler.action = fn
+        self.view.addTarget(self.clickHandler, action: #selector(self.clickHandler.handleAction), forControlEvents: .TouchUpInside)
         
         return self
     }

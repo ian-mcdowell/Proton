@@ -34,14 +34,14 @@ internal class BaseTableCell: UITableViewCell {
 
 internal protocol TableCellObjC {
     func layout() -> ProtonView
-    func configureObjC(model: AnyObject)
-    func tappedObjC(model: AnyObject)
+    func configureObjC(model: Any)
+    func tappedObjC(model: Any)
     var currentCell: BaseTableCell? {get set}
 }
 
 /// Base class for all UITableViewCells used within Proton.
 /// This allows awesome syntax and never having to use a `UITableViewDataSource`.
-public class TableCell<V: AnyObject>: ProtonView, TableCellObjC {
+public class TableCell<V: Any>: ProtonView, TableCellObjC {
     
     required public init() {}
     
@@ -78,10 +78,10 @@ public class TableCell<V: AnyObject>: ProtonView, TableCellObjC {
     
     
     // MARK: ObjC bridge functions
-    func configureObjC(model: AnyObject) {
+    func configureObjC(model: Any) {
         self.configure(model as! V)
     }
-    func tappedObjC(model: AnyObject) {
+    func tappedObjC(model: Any) {
         self.tapped(model as! V)
     }
     
@@ -94,7 +94,21 @@ public class TableCell<V: AnyObject>: ProtonView, TableCellObjC {
 
 
 /// Pre-defined layout of TableCell, with a title and subtitle
-public class TableCellTitleSubtitle<V: AnyObject>: TableCell<V> {
+public class TableCellTitle<V: Any>: TableCell<V> {
+    
+    required public init() {}
+    
+    public var titleLabel: UILabel!
+    
+    override public func layout() -> ProtonView {
+        return AbsoluteLayout([
+            Label().assign(&titleLabel).positionCenterY().position(left: 15, right: 15),
+        ])
+    }
+}
+
+/// Pre-defined layout of TableCell, with a title and subtitle
+public class TableCellTitleSubtitle<V: Any>: TableCell<V> {
     
     required public init() {}
     
@@ -104,12 +118,11 @@ public class TableCellTitleSubtitle<V: AnyObject>: TableCell<V> {
     override public func layout() -> ProtonView {
         return StackLayout([
             Label().assign(&titleLabel).construct{ view in
-                view.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                view.font = UIFont.systemFontOfSize(UIFont.labelFontSize())
             },
             Label().assign(&subtitleLabel).construct{ view in
                 view.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
             }
         ])
     }
-    
 }

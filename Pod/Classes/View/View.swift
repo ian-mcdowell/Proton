@@ -50,7 +50,7 @@ internal struct LayoutSize {
     enum LayoutSizeType {
         case None, Percent, Fixed
     }
-    let type: LayoutSizeType
+    var type: LayoutSizeType
     var width: CGFloat? = nil
     var height: CGFloat? = nil
 }
@@ -67,7 +67,7 @@ public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
     var view: T = T()
     
     // internal
-    internal var clickHandler = ClickHandler()
+    internal var clickHandler = Handler()
     
     internal var position = LayoutPosition()
     internal var size = LayoutSize(type: .None, width: nil, height: nil)
@@ -81,7 +81,7 @@ public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
     
     // MARK: Construct
     
-    public func construct(fn: (view: T) -> Void) -> View {
+    public func construct(fn: (view: T) -> Void) -> Self {
         fn(view: view)
         
         return self
@@ -89,10 +89,10 @@ public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
     
     // MARK: tapped
     
-    public func tapped(fn: () -> Void) -> View {
-        self.clickHandler.tapAction = fn
+    public func onTap(fn: () -> Void) -> Self {
+        self.clickHandler.action = fn
         
-        self.tapGestureRecognizer = UITapGestureRecognizer(target: self.clickHandler, action: #selector(self.clickHandler.handleTap))
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self.clickHandler, action: #selector(self.clickHandler.handleAction))
         
         self.view.addGestureRecognizer(self.tapGestureRecognizer!)
         self.view.userInteractionEnabled = true
@@ -101,12 +101,12 @@ public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
     }
     
     // MARK: assign
-    public func assign(inout a: T!) -> View {
+    public func assign(inout a: T!) -> Self {
         a = view
         return self
     }
     
-    public func assign(inout a: T) -> View {
+    public func assign(inout a: T) -> Self {
         a = view
         return self
     }
@@ -133,14 +133,12 @@ public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
 }
 
 
-internal class ClickHandler: NSObject {
+internal class Handler: NSObject {
     
-    var tapAction: (() -> Void)?
+    var action: (() -> Void)?
     
     
-    @objc func handleTap() {
-        if let action = tapAction {
-            action()
-        }
+    @objc func handleAction() {
+        action?()
     }
 }
