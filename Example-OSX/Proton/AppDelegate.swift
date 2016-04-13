@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         
-        self.window = Proton(rootPage: ImageViewPage())
+        self.window = Proton(rootPage: HomePage())
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

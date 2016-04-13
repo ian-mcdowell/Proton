@@ -104,7 +104,7 @@ private class ImageButtonCell: TableCell<ButtonType> {
     
     override func layout() -> ProtonView {
         return AbsoluteLayout([
-            Button(UIImage(named: "x_icon")).positionCenter()
+            Button(image: UIImage(named: "x_icon")).positionCenter()
         ])
     }
 }

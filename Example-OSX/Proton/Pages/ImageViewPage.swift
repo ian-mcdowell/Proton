@@ -11,9 +11,12 @@ import Proton
 class ImageViewPage: Page {
 
     override func layout() -> ProtonView {
-        return WebView().construct { view in
+        return ImageView(UIImage(named: "image_animal_1")).construct { view in
             
-            view.loadRequest(NSURLRequest(URL: NSURL(string: "https://google.com/")!))
+//            view.contentMode = .ScaleAspectFit
+
+            view.backgroundColor = UIColor.whiteColor()
+
         }
     }
     

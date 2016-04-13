@@ -11,15 +11,20 @@ public class Label: View<UILabel> {
     
     override public init() {
         super.init()
+        
+        #if os(OSX)
+            view.editable = false
+            view.bordered = false
+            
+            view.font = UIFont.systemFontOfSize(UIFont.labelFontSize())
+        #endif
     }
     
     public convenience init(_ text: String) {
         self.init()
-        #if os(iOS)
         view.text = text
-        #elseif os(OSX)
-        view.string = text
-        #endif
+        
+
     }
 
 }

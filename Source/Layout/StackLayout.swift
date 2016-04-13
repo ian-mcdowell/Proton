@@ -37,6 +37,21 @@ public class StackLayout: View<UIView>, Layout {
         self.views = views
         
         super.init()
+        
+        stackView = UIStackView(views: self.uiViews())
+        stackView.orientation = .Vertical
+        stackView.distribution = .GravityAreas
+        stackView.alignment = .Left
+        
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.view.addSubview(stackView)
+        stackView.constrainToEdgesOfSuperview()
+        
+        // add width and height constraints
+        for view in self.views {
+            self.addSizeConstraintsToView(view, superview: self.view)
+        }
     }
     #endif
     

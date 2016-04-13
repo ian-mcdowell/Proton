@@ -6,7 +6,7 @@
 //  Copyright © 2016 Ian McDowell. All rights reserved.
 //
 
-#if os(iOS)
+
 internal class BaseTableCell: UITableViewCell {
     
     var tableCell: TableCellObjC? {
@@ -21,7 +21,12 @@ internal class BaseTableCell: UITableViewCell {
             
             self.lastLayout = self.tableCell?.layout()
             let view = self.lastLayout!.getView()
-            self.contentView.addSubview(view)
+            
+            #if os(iOS)
+                self.contentView.addSubview(view)
+            #elseif os(OSX)
+                self.addSubview(view)
+            #endif
             view.constrainToEdgesOfSuperview()
         }
     }
@@ -62,12 +67,16 @@ public class TableCell<V: Any>: ProtonView, TableCellObjC {
     
     /// Deselects the cell.
     public func deselect() {
+        #if os(iOS)
         self.currentCell?.setSelected(false, animated: true)
+        #endif
     }
     
     /// Selects the cell.
     public func select() {
+        #if os(iOS)
         self.currentCell?.setSelected(true, animated: true)
+        #endif
     }
     
     /// Returns the layout of the cell. Override this to
@@ -116,13 +125,8 @@ public class TableCellTitleSubtitle<V: Any>: TableCell<V> {
     
     override public func layout() -> ProtonView {
         return StackLayout([
-            Label().assign(&titleLabel).construct{ view in
-                view.font = UIFont.systemFontOfSize(UIFont.labelFontSize())
-            },
-            Label().assign(&subtitleLabel).construct{ view in
-                view.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-            }
+            Label().assign(&titleLabel),
+            Label().assign(&subtitleLabel)
         ])
     }
 }
-#endif

@@ -14,17 +14,10 @@ public class Input: View<UITextField> {
     public init(text: String? = nil, placeholder: String? = nil) {
         super.init()
         
-        #if os(iOS)
         self.view.text = text
         self.view.placeholder = placeholder
         
         self.view.delegate = self.inputManager
-        #elseif os(OSX)
-        self.view.stringValue = text ?? ""
-        self.view.placeholderString = placeholder
-            
-        self.view.delegate = self.inputManager
-        #endif
     }
     
     public func onReturn(fn: (field: UITextField) -> Void) -> Self {

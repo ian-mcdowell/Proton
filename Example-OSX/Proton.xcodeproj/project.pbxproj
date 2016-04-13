@@ -12,7 +12,13 @@
 		A469C1951CBEC025007C27FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1941CBEC025007C27FC /* AppDelegate.swift */; };
 		A469C1971CBEC025007C27FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A469C1961CBEC025007C27FC /* Assets.xcassets */; };
 		A469C19A1CBEC025007C27FC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A469C1981CBEC025007C27FC /* MainMenu.xib */; };
-		A469C1AC1CBEC342007C27FC /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1AB1CBEC342007C27FC /* ImageViewPage.swift */; };
+		A469C1B51CBECCE6007C27FC /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1AD1CBECCE6007C27FC /* HomePage.swift */; };
+		A469C1B61CBECCE6007C27FC /* ActivityIndicatorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1AF1CBECCE6007C27FC /* ActivityIndicatorPage.swift */; };
+		A469C1B71CBECCE6007C27FC /* AlertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1B01CBECCE6007C27FC /* AlertPage.swift */; };
+		A469C1B81CBECCE6007C27FC /* ButtonPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1B11CBECCE6007C27FC /* ButtonPage.swift */; };
+		A469C1B91CBECCE6007C27FC /* DatePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1B21CBECCE6007C27FC /* DatePickerPage.swift */; };
+		A469C1BA1CBECCE6007C27FC /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1B31CBECCE6007C27FC /* ImageViewPage.swift */; };
+		A469C1BB1CBECCE6007C27FC /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469C1B41CBECCE6007C27FC /* WebViewPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +33,13 @@
 		A469C19B1CBEC025007C27FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A469C1A51CBEC0B3007C27FC /* Proton_Tests.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Proton_Tests.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		A469C1A71CBEC0B3007C27FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A469C1AB1CBEC342007C27FC /* ImageViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
+		A469C1AD1CBECCE6007C27FC /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		A469C1AF1CBECCE6007C27FC /* ActivityIndicatorPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorPage.swift; sourceTree = "<group>"; };
+		A469C1B01CBECCE6007C27FC /* AlertPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPage.swift; sourceTree = "<group>"; };
+		A469C1B11CBECCE6007C27FC /* ButtonPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPage.swift; sourceTree = "<group>"; };
+		A469C1B21CBECCE6007C27FC /* DatePickerPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPage.swift; sourceTree = "<group>"; };
+		A469C1B31CBECCE6007C27FC /* ImageViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
+		A469C1B41CBECCE6007C27FC /* WebViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
 		AEB30F20D6756109F085DE93 /* Pods-Proton_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proton_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proton_Example/Pods-Proton_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B386E975FCF444968CAD3503 /* Pods_Proton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,8 +87,9 @@
 		A469C1931CBEC025007C27FC /* Proton */ = {
 			isa = PBXGroup;
 			children = (
-				A469C1AB1CBEC342007C27FC /* ImageViewPage.swift */,
 				A469C1941CBEC025007C27FC /* AppDelegate.swift */,
+				A469C1AD1CBECCE6007C27FC /* HomePage.swift */,
+				A469C1AE1CBECCE6007C27FC /* Pages */,
 				A469C1961CBEC025007C27FC /* Assets.xcassets */,
 				A469C1981CBEC025007C27FC /* MainMenu.xib */,
 				A469C19B1CBEC025007C27FC /* Info.plist */,
@@ -90,6 +103,19 @@
 				A469C1A71CBEC0B3007C27FC /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		A469C1AE1CBECCE6007C27FC /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				A469C1AF1CBECCE6007C27FC /* ActivityIndicatorPage.swift */,
+				A469C1B01CBECCE6007C27FC /* AlertPage.swift */,
+				A469C1B11CBECCE6007C27FC /* ButtonPage.swift */,
+				A469C1B21CBECCE6007C27FC /* DatePickerPage.swift */,
+				A469C1B31CBECCE6007C27FC /* ImageViewPage.swift */,
+				A469C1B41CBECCE6007C27FC /* WebViewPage.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		BF23C1FBF954B53D0A77A71B /* Pods */ = {
@@ -294,7 +320,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A469C1951CBEC025007C27FC /* AppDelegate.swift in Sources */,
-				A469C1AC1CBEC342007C27FC /* ImageViewPage.swift in Sources */,
+				A469C1B61CBECCE6007C27FC /* ActivityIndicatorPage.swift in Sources */,
+				A469C1BB1CBECCE6007C27FC /* WebViewPage.swift in Sources */,
+				A469C1BA1CBECCE6007C27FC /* ImageViewPage.swift in Sources */,
+				A469C1B91CBECCE6007C27FC /* DatePickerPage.swift in Sources */,
+				A469C1B81CBECCE6007C27FC /* ButtonPage.swift in Sources */,
+				A469C1B51CBECCE6007C27FC /* HomePage.swift in Sources */,
+				A469C1B71CBECCE6007C27FC /* AlertPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

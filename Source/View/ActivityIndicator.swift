@@ -13,13 +13,13 @@ public class ActivityIndicator: View<UIActivityIndicatorView> {
         super.init()
         
         #if os(iOS)
-        self.view.activityIndicatorViewStyle = .Gray
+            self.view.activityIndicatorViewStyle = .Gray
         
-        self.view.startAnimating()
+            self.view.startAnimating()
         
-        self.view.hidesWhenStopped = true
+            self.view.hidesWhenStopped = true
         #elseif os(OSX)
-        self.view.style = .SpinningStyle
+            self.view.style = .SpinningStyle
         #endif
     }
     

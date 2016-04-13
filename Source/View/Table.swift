@@ -5,7 +5,7 @@
 //  Created by McDowell, Ian J [ITACD] on 3/25/16.
 //  Copyright © 2016 Ian McDowell. All rights reserved.
 //
-#if os(iOS)
+
 // Observable structure to house an array of data for use with a `Table`.
 public class TableData<T: Any> {
     public var value: [T] {
@@ -65,20 +65,46 @@ public class Table<V: Any>: View<UITableView> {
     
     private var tableManager = TableManager<V>()
     
+    #if os(OSX)
+    private var scrollView: NSScrollView!
+    #endif
+    
     public init(cells: [AnyClass], style: UITableViewStyle = .Plain) {
         super.init()
         
         if style != .Plain {
-            self.view = UITableView(frame: CGRectZero, style: style)
+            #if os(iOS)
+                self.view = UITableView(frame: CGRectZero, style: style)
+            #elseif os(OSX)
+                self.view = UITableView(frame: NSMakeRect(0, 0, 0, 0))
+            #endif
         }
         
         self.tableManager.cells = cells
-        self.view.dataSource = self.tableManager
-        self.view.delegate = self.tableManager
+        #if os(iOS)
+            self.view.dataSource = self.tableManager
+            self.view.delegate = self.tableManager
         
-        for cell in cells {
-            self.view.registerClass(BaseTableCell.self, forCellReuseIdentifier: NSStringFromClass(cell.self))
-        }
+            for cell in cells {
+                self.view.registerClass(BaseTableCell.self, forCellReuseIdentifier: NSStringFromClass(cell.self))
+            }
+        #elseif os(OSX)
+       
+            self.scrollView = NSScrollView(frame: NSMakeRect(0, 0, 0, 0))
+            self.scrollView.documentView = self.view
+
+            self.view.addTableColumn(NSTableColumn(identifier: "main"))
+            self.view.headerView = nil
+
+            
+            
+            self.view.setDataSource(self.tableManager)
+            self.view.setDelegate(self.tableManager)
+            
+            for cell in cells {
+                self.view.makeViewWithIdentifier(NSStringFromClass(cell.self), owner: self.tableManager)
+            }
+        #endif
     }
     
     public convenience init(data: TableData<V>, cells: [AnyClass], style: UITableViewStyle = .Plain) {
@@ -124,12 +150,20 @@ public class Table<V: Any>: View<UITableView> {
         
         self.view.reloadData()
     }
+    
+    
+    #if os(OSX)
+    // On OS X, table views need to be wrapped in scrollviews to be able to scroll :(
+    public override func getView() -> UIView {
+        return self.scrollView
+    }
+    #endif
 
 }
 
 
 
-
+#if os(iOS)
 private class TableManager<V: Any>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var sections = [TableSection<V>]()
@@ -147,7 +181,7 @@ private class TableManager<V: Any>: NSObject, UITableViewDataSource, UITableView
     @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let model = sections[indexPath.section].items[indexPath.row]
-        let type = getTypeOfModel(model)
+        let type = getTypeOfModel(model, cells)
         
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(type), forIndexPath: indexPath) as! BaseTableCell
         cell.tableCell = type.init()
@@ -169,23 +203,86 @@ private class TableManager<V: Any>: NSObject, UITableViewDataSource, UITableView
         return sections[section].title
     }
     
-    private func getTypeOfModel(model: V) -> TableCell<V>.Type {
-        var foundCount = 0
-        var type: TableCell<V>.Type? = nil
-        for cell in cells {
-            if let thisType = cell as? TableCell<V>.Type {
-                if thisType.displays(model) {
-                    foundCount = foundCount + 1
-                    type = thisType
+
+}
+    
+#elseif os(OSX)
+    
+private class TableManager<V: Any>: NSObject, NSTableViewDataSource, NSTableViewDelegate {
+    var sections = [TableSection<V>]()
+    var cells = [AnyClass]()
+    
+    @objc func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+        return totalRows()
+    }
+    
+    @objc func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        let model = getItemAtTotalRow(row)!
+        let type = getTypeOfModel(model, cells)
+        let identifier = NSStringFromClass(type)
+        
+        var cell = tableView.makeViewWithIdentifier(identifier, owner: self) as? BaseTableCell
+        
+        if cell == nil {
+            cell = BaseTableCell(frame: NSMakeRect(0, 0, 0, 0))
+            cell?.identifier = identifier
+        }
+        
+        cell?.tableCell = type.init()
+        
+        
+        
+        cell?.tableCell?.configureObjC(model)
+        
+        cell?.layout()
+        
+        return cell
+    }
+    
+    @objc func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 44
+    }
+
+    
+    private func totalRows() -> Int {
+        var total = 0
+        for section in sections {
+            total += section.items.count
+        }
+        return total
+    }
+    
+    private func getItemAtTotalRow(requestedRow: Int) -> V? {
+        var index = 0
+        for section in sections {
+            for row in section.items {
+                if index == requestedRow {
+                    return row
                 }
+                index += 1
             }
         }
-        if foundCount == 0 {
-            fatalError("No cell type provided to the Table is able to display model of type: \(model.self). Make sure you are implementing the 'displays(model) -> Bool' method of your TableCell")
-        } else if foundCount > 1 {
-            fatalError("Multiple cell types provided to the Table are able to display model of type: \(model.self). Make sure you are returning true only once per model from the 'displays(model) -> Bool' method of your TableCell")
-        }
-        return type!
+        return nil
     }
 }
 #endif
+
+private func getTypeOfModel<V: Any>(model: V, _ cells: [AnyClass]) -> TableCell<V>.Type {
+    var foundCount = 0
+    var type: TableCell<V>.Type? = nil
+    for cell in cells {
+        if let thisType = cell as? TableCell<V>.Type {
+            if thisType.displays(model) {
+                foundCount = foundCount + 1
+                type = thisType
+            }
+        }
+    }
+    if foundCount == 0 {
+        fatalError("No cell type provided to the Table is able to display model of type: \(model.self). Make sure you are implementing the 'displays(model) -> Bool' method of your TableCell")
+    } else if foundCount > 1 {
+        fatalError("Multiple cell types provided to the Table are able to display model of type: \(model.self). Make sure you are returning true only once per model from the 'displays(model) -> Bool' method of your TableCell")
+    }
+    return type!
+}
