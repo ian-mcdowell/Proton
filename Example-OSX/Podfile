@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'Proton_Example', :exclusive => true do
+  pod 'Proton', :path => '../'
+end
+
+target 'Proton_Tests', :exclusive => true do
+  pod 'Proton', :path => '../'
+
+  pod 'Quick', '~> 0.8'
+  pod 'Nimble', '~> 3.0'
+end
