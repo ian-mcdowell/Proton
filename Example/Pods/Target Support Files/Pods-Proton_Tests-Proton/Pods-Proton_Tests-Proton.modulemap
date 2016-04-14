@@ -1,0 +1,6 @@
+framework module Proton {
+  umbrella header "Pods-Proton_Tests-Proton-umbrella.h"
+
+  export *
+  module * { export * }
+}

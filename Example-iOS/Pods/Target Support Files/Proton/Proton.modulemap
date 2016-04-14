@@ -1,6 +1,0 @@
-framework module Proton {
-  umbrella header "Proton-umbrella.h"
-
-  export *
-  module * { export * }
-}

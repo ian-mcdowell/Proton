@@ -1,0 +1,27 @@
+{
+  "name": "Proton",
+  "version": "0.1.0",
+  "summary": "Platform for easily building iOS apps in Swift",
+  "description": "Platform for easily building iOS and OS X apps in Swift.",
+  "homepage": "https://github.com/IMcD23/Proton",
+  "license": "MIT",
+  "authors": {
+    "IMcD23": "mcdow.ian@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/IMcD23/Proton.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0",
+    "osx": "10.11"
+  },
+  "ios": {
+    "source_files": "Source/Core/**/*",
+    "frameworks": "UIKit"
+  },
+  "osx": {
+    "source_files": "Source/{Core,AppKitBridge}/**/*",
+    "frameworks": "AppKit"
+  }
+}

@@ -1,0 +1,21 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'Proton_Example_iOS', :exclusive => true do
+  pod 'Proton', :path => '../'
+  platform :ios, '9.0'
+end
+
+target 'Proton_Example_OSX', :exclusive => true do
+    pod 'Proton', :path => '../'
+    platform :osx, '10.11'
+end
+
+target 'Proton_Tests', :exclusive => true do
+  pod 'Proton', :path => '../'
+
+  pod 'Quick', '~> 0.8'
+  pod 'Nimble', '~> 3.0'
+  pod 'FBSnapshotTestCase'
+  pod 'Nimble-Snapshots'
+end
