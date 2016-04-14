@@ -28,16 +28,29 @@ public typealias UIResponder = BridgedUIResponder<NSResponder>
             // UITextView
         // UIStackView
         // UITabBar
-        // UITableViewCell
+        public typealias UITableViewCell = BridgedUITableViewCell<NSTableRowView>
         // UIToolbar
         // UIWindow
-    public typealias UIViewController = BridgedUIViewController<NSViewController>
-        public typealias UINavigationController = BridgedUINavigationController<NSViewController>
+    public typealias UIViewController = BridgedUIViewController<NSCustomViewController>
+        public typealias UINavigationController = BridgedUINavigationController<NSCustomViewController>
 
 
 
 // TODO:
 public typealias UIStackView = BridgedUIResponder<NSStackView>
+
+
+public enum UIControlState {
+    case Normal, Highlighted, Disabled, Selected, Focused, Application, Reserved
+}
+
+public enum UIButtonType {
+    case Custom, System, DetailDisclosure, InfoLight, InfoDark, ContactAdd
+}
+
+public enum UITableViewCellStyle {
+    case Default, Value1, Value2, Subtitle
+}
 
 public class BridgedView<T: NSObject>: NSObject {
     

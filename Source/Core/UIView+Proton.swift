@@ -53,7 +53,7 @@ internal extension BridgedUIView {
         var parentResponder: NSResponder? = self.bridgedView
         while parentResponder != nil {
             parentResponder = parentResponder?.nextResponder
-            if let viewController = parentResponder as? NSViewController {
+            if let viewController = parentResponder as? NSCustomViewController {
                 return UIViewController(existingValue: viewController)
             }
         }

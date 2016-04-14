@@ -61,7 +61,7 @@ internal protocol AbsoluteLayoutView {
 
 /// Base class of View, which is a holder for a `UIView`. All other Proton views
 /// are subclasses of this.
-public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
+public class View<T>: ProtonView, AbsoluteLayoutView {
     
     var view: T!
     
@@ -77,10 +77,10 @@ public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
     #endif
     
     public init() {
-        view = T(frame: CGRectZero)
+        fatalError("Failed to init a view. Programmer, please override the init method of this view and construct the 'view' variable in it.")
     }
     
-    public init(view: T) {
+    internal init(view: T) {
         self.view = view
     }
     
@@ -133,7 +133,7 @@ public class View<T: UIView>: ProtonView, AbsoluteLayoutView {
     // MARK: ViewHolder
     
     public func getView() -> UIView {
-        return view
+        return view as! UIView
     }
 
 }

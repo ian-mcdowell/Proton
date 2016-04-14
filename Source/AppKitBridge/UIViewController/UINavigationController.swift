@@ -9,7 +9,7 @@
 import AppKit
 
 
-public class BridgedUINavigationController<T: NSViewController>: BridgedUIViewController<T> {
+public class BridgedUINavigationController<T: NSCustomViewController>: BridgedUIViewController<T> {
 
     
     public var viewControllers = Array<UIViewController>()
@@ -31,7 +31,7 @@ public class BridgedUINavigationController<T: NSViewController>: BridgedUIViewCo
 //    }
     
     public override func loadView() {
-//        self.bridgedView = viewControllers[currentViewController]
+        self.bridgedView.view = viewControllers[currentViewController].bridgedView.view
     }
     
     

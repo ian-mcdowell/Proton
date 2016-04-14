@@ -10,7 +10,14 @@ import AppKit
 
 public class BridgedUILabel<T: NSTextField>: BridgedUIView<T> {
     
-    var text: String? {
+    public init() {
+        super.init(frame: CGRectZero)
+        
+        self.bridgedView.editable = false
+        self.bridgedView.bordered = false
+    }
+    
+    public var text: String? {
         set {
             self.bridgedView.stringValue = newValue ?? ""
         }
@@ -18,7 +25,7 @@ public class BridgedUILabel<T: NSTextField>: BridgedUIView<T> {
             return self.bridgedView.stringValue
         }
     }
-    var textAlignment: NSTextAlignment {
+    public var textAlignment: NSTextAlignment {
         set {
             self.bridgedView.alignment = textAlignment
         }

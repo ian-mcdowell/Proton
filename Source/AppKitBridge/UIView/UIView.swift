@@ -17,7 +17,7 @@ public class BridgedUIView<T: NSView>: BridgedUIResponder<T> {
     }
     
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
-    public required init(frame: CGRect) {
+    public init(frame: CGRect) {
         super.init()
         
         let boundVars = [

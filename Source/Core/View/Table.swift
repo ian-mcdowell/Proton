@@ -65,9 +65,6 @@ public class Table<V: Any>: View<UITableView> {
     
     private var tableManager = TableManager<V>()
     
-    #if os(OSX)
-    private var scrollView: NSScrollView!
-    #endif
     
     public init(cells: [AnyClass], style: UITableViewStyle = .Plain) {
         super.init(view: UITableView(frame: CGRectZero, style: style))
@@ -142,14 +139,6 @@ public class Table<V: Any>: View<UITableView> {
         
         self.view.reloadData()
     }
-    
-    
-    #if os(OSX)
-    // On OS X, table views need to be wrapped in scrollviews to be able to scroll :(
-    public override func getView() -> UIView {
-        return self.scrollView
-    }
-    #endif
 
 }
 
@@ -217,7 +206,7 @@ private class TableManager<V: Any>: NSObject, NSTableViewDataSource, NSTableView
         var cell = tableView.makeViewWithIdentifier(identifier, owner: self) as? BaseTableCell
         
         if cell == nil {
-            cell = BaseTableCell(frame: NSMakeRect(0, 0, 0, 0))
+            cell = BaseTableCell()
             cell?.identifier = identifier
         }
         
@@ -227,7 +216,7 @@ private class TableManager<V: Any>: NSObject, NSTableViewDataSource, NSTableView
         
         cell?.layout()
         
-        return cell
+        return cell?.bridgedView
     }
     
     @objc func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {

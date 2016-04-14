@@ -50,7 +50,7 @@ public class CollectionCell: UICollectionViewCell {
     }
     
     public func layout() -> ProtonView {
-        return View()
+        return View<UIView>()
     }
     
     public override func layoutIfNeeded() {

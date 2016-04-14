@@ -22,11 +22,8 @@ internal class BaseTableCell: UITableViewCell {
             self.lastLayout = self.tableCell?.layout()
             let view = self.lastLayout!.getView()
             
-            #if os(iOS)
-                self.contentView.addSubview(view)
-            #elseif os(OSX)
-                self.addSubview(view)
-            #endif
+            self.contentView.addSubview(view)
+
             view.constrainToEdgesOfSuperview()
         }
     }
@@ -81,7 +78,7 @@ public class TableCell<V: Any>: ProtonView, TableCellObjC {
     
     /// Returns the layout of the cell. Override this to
     public func layout() -> ProtonView {
-        return View()
+        return View<UIView>()
     }
     
     

@@ -52,6 +52,7 @@
 		3C09200B1CBF91710093C4C5 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85B7D6F51B919FC1B5FB29D2186C6C3 /* Table.swift */; };
 		3C09200C1CBF91820093C4C5 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8545D8356E733CF2B829F8D3309D1B /* TableCell.swift */; };
 		3C09200D1CBF919F0093C4C5 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D2A97C91F616F68C8246E100A133D /* Label.swift */; };
+		3C09200E1CBF9B250093C4C5 /* StackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A1A73AC00F416E04E13993A2145E20 /* StackLayout.swift */; };
 		3C18F29E03CADC58B278518F22B7B517 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9FFE9D0794D1561E7311F6E2F2923A /* QuartzCore.framework */; };
 		3C4007101CBF551D00CB60DA /* AppKitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C40070F1CBF551D00CB60DA /* AppKitBridge.swift */; };
 		3C40071D1CBF7B8E00CB60DA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C40071C1CBF7B8E00CB60DA /* UIViewController.swift */; };
@@ -97,7 +98,6 @@
 		63928C78309ECB689D6780541711276D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509A38BBF9FB76FDD0A10939DA80DE5F /* Foundation.framework */; };
 		63BBD83995BA60FA7D2E6AD4138C0D71 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE7E08D87DDF34047548FDDA4CBDD5 /* Functional.swift */; };
 		64539BE196D1741570018FFF86F14133 /* MatcherFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE300E3EAEB55D242BB905111CE02C5A /* MatcherFunc.swift */; };
-		64CA6F592C0537508780B5441BA6C834 /* NSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B85CBC9FEF6668103AA01D00F2A5D2 /* NSBridge.swift */; };
 		65D5E2C4778C3C60740C45B24C0E7C51 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DB90A1DE4EA5614BF9C56FCD47ECF /* DatePicker.swift */; };
 		6779EAF68C64CCD7FBD837A975B9D345 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414E1A4B4B64C77F9F1B136B07A1CB4 /* ActivityIndicator.swift */; };
 		68527A7545342CBB4F923DC8543F7B20 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEB803D8113B84CEF9D7767BA8BDF2 /* DSL.m */; };
@@ -158,7 +158,6 @@
 		A7F9AAC65FC2D87C34EA9D6A5ACB4401 /* FBSnapshotTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 456A16952FF748F866B14FE0DD2ABC2C /* FBSnapshotTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7FE6C34C29122F09B38916D7C057BE8 /* Pods-Proton_Tests-Proton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0967F64454622965B4609FE6F3724EAD /* Pods-Proton_Tests-Proton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6E10EC54CDAA3A651FA8AB825DFA08 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D2A97C91F616F68C8246E100A133D /* Label.swift */; };
-		AB6D8F643691E95C0BCD4C14B3567833 /* NSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B85CBC9FEF6668103AA01D00F2A5D2 /* NSBridge.swift */; };
 		AB919C38AB06137C6FADDAABFA321C3A /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = F03A1A302C6C29F7707D1545C60B509D /* QCKDSL.m */; };
 		AC035703A5A6D4B4A99CF3A3C25A9EC4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7650F71093A9494D17966B55EE57BC9B /* Quick.framework */; };
 		AC2E6CD020E53A3905ECA2027F4B6F0C /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5D10BCD0066C637018C7806D39B902 /* ExampleGroup.swift */; };
@@ -169,7 +168,6 @@
 		B25B8117FB47D39317C53711434F6800 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59333C4BE8F9805D74F214B894EF72E5 /* Alertable.swift */; };
 		B43EDBC7DA15A429006C67B63D45ACFD /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E685779B53865FBDF4197A9CE4D9FD1 /* ThrowError.swift */; };
 		B63F8D176E9C6C4C037F922415B313A3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60986025563DB95027617A97685D8D5 /* Button.swift */; };
-		B6DC4D049FA163903DBD2025C685650D /* NSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B85CBC9FEF6668103AA01D00F2A5D2 /* NSBridge.swift */; };
 		B9D2E426B5CA226D60A78A71FA289D4C /* AsyncMatcherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5BE94693475F841CEEC329FF19A11 /* AsyncMatcherWrapper.swift */; };
 		B9DE0E6F68AD1E4B2E411CE8E363B959 /* View+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DAD89A500B7534D9EEF2C3120522AB /* View+Size.swift */; };
 		BAF210A72EEF2725434CAA4A595C7B02 /* ErrorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9D54735C982473CFF0644E3A03B67 /* ErrorUtility.swift */; };
@@ -363,7 +361,6 @@
 		3F0CB12D4FA3F8A1A7B7BFD34CC73DAD /* Pods_Proton_Example_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proton_Example_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBF6C60F7E659963D4D93CF9E78A8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		425293E77484F37F2F26FA98CECCAB9F /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
-		42B85CBC9FEF6668103AA01D00F2A5D2 /* NSBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NSBridge.swift; sourceTree = "<group>"; };
 		4380C2BE7C11340D9BAE7CB31D4E8511 /* Pods-Proton_Tests-Proton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-Proton_Tests-Proton-prefix.pch"; path = "../Pods-Proton_Tests-Proton/Pods-Proton_Tests-Proton-prefix.pch"; sourceTree = "<group>"; };
 		440C1E2EE5D680BE6079CE69974985C3 /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
 		456A16952FF748F866B14FE0DD2ABC2C /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/FBSnapshotTestCase.h; sourceTree = "<group>"; };
@@ -810,7 +807,6 @@
 			children = (
 				59333C4BE8F9805D74F214B894EF72E5 /* Alertable.swift */,
 				117802497F1CB163D424EEBA1833599E /* Navigatable.swift */,
-				42B85CBC9FEF6668103AA01D00F2A5D2 /* NSBridge.swift */,
 				BA8E5FBC05B361B56FA691027554318C /* Page.swift */,
 				29AEC00EE533C20BCFF3380DB0421BCD /* Percent.swift */,
 				B88700945D93412D538D272268846334 /* Proton.swift */,
@@ -1425,7 +1421,6 @@
 				AA6E10EC54CDAA3A651FA8AB825DFA08 /* Label.swift in Sources */,
 				288C4A1953807F4BE077ADAD99C1C451 /* Layout.swift in Sources */,
 				CD4F20622BE09C08A83B96DEB35EFFD5 /* Navigatable.swift in Sources */,
-				B6DC4D049FA163903DBD2025C685650D /* NSBridge.swift in Sources */,
 				0B3609970A13A01312AE1BBACB38B6F4 /* Page.swift in Sources */,
 				EB5CAAE89C3D0CA1099200F11D7FA42E /* Percent.swift in Sources */,
 				345FA1A40D42E95EC9463F15C6FE226F /* Pods-Proton_Tests-Proton-dummy.m in Sources */,
@@ -1499,6 +1494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C09200E1CBF9B250093C4C5 /* StackLayout.swift in Sources */,
 				E0F7412AA9B88EE99C5E70BA470A1EEF /* AbsoluteLayout.swift in Sources */,
 				B25B8117FB47D39317C53711434F6800 /* Alertable.swift in Sources */,
 				C0406890ACA65F099B85C9C142EC7EED /* Collection.swift in Sources */,
@@ -1511,7 +1507,6 @@
 				6C5FBE9BA9D0F4F41DD3D145D2AA867D /* Navigatable.swift in Sources */,
 				3C09200C1CBF91820093C4C5 /* TableCell.swift in Sources */,
 				3C40071D1CBF7B8E00CB60DA /* UIViewController.swift in Sources */,
-				AB6D8F643691E95C0BCD4C14B3567833 /* NSBridge.swift in Sources */,
 				3C4007361CBF7DFB00CB60DA /* UIImage.swift in Sources */,
 				3C40072F1CBF7D5600CB60DA /* UITextField.swift in Sources */,
 				BDEA065B07F93E5D77BDFE0E27ADB03F /* Page.swift in Sources */,
@@ -1561,7 +1556,6 @@
 				5E2C816CCA223173504F3D424E43EBBA /* Label.swift in Sources */,
 				7726B731845E48EBA9E3D8A832BC4F04 /* Layout.swift in Sources */,
 				5F657052585E3781F5072022DB5F1AF0 /* Navigatable.swift in Sources */,
-				64CA6F592C0537508780B5441BA6C834 /* NSBridge.swift in Sources */,
 				E18C6CC9470DB4B468D7D3E33D45862C /* Page.swift in Sources */,
 				AE67DC4EC6C71FCAF4A7A7ACF5018994 /* Percent.swift in Sources */,
 				EF0EC4272A9EF73E99B69A7754574E01 /* Pods-Proton_Example_iOS-Proton-dummy.m in Sources */,

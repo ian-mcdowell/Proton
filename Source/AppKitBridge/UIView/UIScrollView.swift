@@ -10,6 +10,8 @@ import AppKit
 
 public class BridgedUIScrollView<T: NSScrollView>: BridgedUIView<T> {
     
-    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
     
 }

@@ -48,7 +48,7 @@ public class Page: UIViewController {
     
     
     public func layout() -> ProtonView {
-        return View().construct { view in
+        return View<UIView>().construct { view in
             view.backgroundColor = UIColor.whiteColor()
         }
     }

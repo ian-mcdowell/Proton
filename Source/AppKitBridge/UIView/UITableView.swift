@@ -13,6 +13,8 @@ public enum UITableViewStyle {
 }
 
 public protocol UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func tableView(tableView: UITableView, numberOFRowsInSection section: Int) -> Int
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 }
 
@@ -22,11 +24,40 @@ public class BridgedUITableView<T: NSTableView>: BridgedUIScrollView<NSScrollVie
     
     private var tableView: T = T()
     
+    public var dataSource: UITableViewDataSource?
+    
+    public init(frame: CGRect, style: UITableViewStyle) {
+        super.init(frame: frame)
+    
+    }
+    
     public func reloadData() {
         
     }
 }
 
-public class UITableViewCell: NSTableRowView {
+public class BridgedUITableViewCell<T: NSTableRowView>: BridgedUIView<NSView> {
     
+    internal init() {
+        super.init(frame: CGRectZero)
+    }
+    
+    public var identifier: String? {
+        set {
+            self.bridgedView.identifier = newValue
+        }
+        get {
+            return self.bridgedView.identifier
+        }
+    }
+    
+    public var contentView: UIView {
+        get {
+            return self
+        }
+    }
+    
+    public func layout() {
+        self.bridgedView.layout()
+    }
 }
