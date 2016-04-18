@@ -55,7 +55,7 @@ public class NSCustomViewController: NSViewController {
 
 public class BridgedUIViewController<T: NSCustomViewController>: BridgedUIResponder<T>, NSLoadView  {
 
-    public var view: UIView!
+    
     
     
     public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -68,6 +68,15 @@ public class BridgedUIViewController<T: NSCustomViewController>: BridgedUIRespon
         super.init(existingValue: existingValue)
     }
     
+    
+    public var view: UIView! {
+        set {
+            self.bridgedView.view = newValue.bridgedView
+        }
+        get {
+            return UIView(existingValue: self.bridgedView.view)
+        }
+    }
     
     public var navigationController: UINavigationController? {
         get {

@@ -5,7 +5,7 @@
 //  Created by McDowell, Ian J [ITACD] on 3/29/16.
 //  Copyright © 2016 Ian McDowell. All rights reserved.
 //
-#if os(iOS)
+
 public class Collection: View<UICollectionView> {
 
     private var dataSource = CollectionDataSource()
@@ -102,4 +102,3 @@ public class CollectionCell: UICollectionViewCell {
         fatalError("No cell type provided to the Collection is able to display model of type: \(model.self). Make sure you are implementing the 'displays(model) -> Bool' method of your CollectionCell")
     }
 }
-#endif

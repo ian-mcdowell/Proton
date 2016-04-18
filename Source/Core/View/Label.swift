@@ -11,7 +11,7 @@ public class Label: View<UILabel> {
     
     override public init() {
         super.init()
-
+        self.view = UILabel()
     }
     
     public convenience init(_ text: String) {

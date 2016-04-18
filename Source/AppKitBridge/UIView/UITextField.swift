@@ -10,7 +10,7 @@ import AppKit
 
 public class BridgedUITextField<T: NSTextField>: BridgedUIControl<T> {
     
-    var text: String? {
+    public var text: String? {
         set {
             self.bridgedView.stringValue = newValue ?? ""
         }
@@ -19,7 +19,7 @@ public class BridgedUITextField<T: NSTextField>: BridgedUIControl<T> {
         }
     }
     
-    var placeholder: String? {
+    public var placeholder: String? {
         set {
             self.bridgedView.placeholderString = newValue
         }
@@ -28,7 +28,7 @@ public class BridgedUITextField<T: NSTextField>: BridgedUIControl<T> {
         }
     }
     
-    var textAlignment: NSTextAlignment {
+    public var textAlignment: NSTextAlignment {
         set {
             self.bridgedView.alignment = textAlignment
         }

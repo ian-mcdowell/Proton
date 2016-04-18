@@ -8,6 +8,7 @@
 
 public typealias UIColor = BridgedUIColor<NSColor>
 public typealias UIImage = BridgedUIImage<NSImage>
+public typealias UINib = BridgedUINib<NSNib>
 
 public typealias UIResponder = BridgedUIResponder<NSResponder>
     public typealias UIWindow = BridgedUIWindow<NSWindow>
@@ -24,9 +25,9 @@ public typealias UIResponder = BridgedUIResponder<NSResponder>
         // UINavigationBar
         public typealias UIScrollView = BridgedUIScrollView<NSScrollView>
             // UICollectionView
-            public typealias UITableView = BridgedUITableView<NSTableView>
+            public typealias UITableView = BridgedUITableView<NSCustomTableView>
             // UITextView
-        // UIStackView
+        public typealias UIStackView = BridgedUIStackView<NSStackView>
         // UITabBar
         public typealias UITableViewCell = BridgedUITableViewCell<NSTableRowView>
         // UIToolbar
@@ -36,8 +37,6 @@ public typealias UIResponder = BridgedUIResponder<NSResponder>
 
 
 
-// TODO:
-public typealias UIStackView = BridgedUIResponder<NSStackView>
 
 
 public enum UIControlState {
@@ -52,7 +51,12 @@ public enum UITableViewCellStyle {
     case Default, Value1, Value2, Subtitle
 }
 
-public class BridgedView<T: NSObject>: NSObject {
+
+public protocol BridgedNSView {
+    func getView() -> NSObject
+}
+
+public class BridgedView<T: NSObject>: NSObject, BridgedNSView {
     
     var bridgedView: T!
     
@@ -75,6 +79,10 @@ public class BridgedView<T: NSObject>: NSObject {
         super.init()
         
         self.bridgedView = existingValue
+    }
+    
+    public func getView() -> NSObject {
+        return self.bridgedView
     }
 
 }

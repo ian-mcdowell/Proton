@@ -9,6 +9,14 @@
 
 internal class BaseTableCell: UITableViewCell {
     
+    override required init() {
+        super.init()
+    }
+    
+    override required init?(existingValue: NSTableRowView?) {
+        super.init(existingValue: existingValue)
+    }
+    
     var tableCell: TableCellObjC? {
         willSet {
             tableCell?.currentCell = nil
@@ -22,7 +30,8 @@ internal class BaseTableCell: UITableViewCell {
             self.lastLayout = self.tableCell?.layout()
             let view = self.lastLayout!.getView()
             
-            self.contentView.addSubview(view)
+//            self.contentView.addSubview(view)
+            self.addSubview(view)
 
             view.constrainToEdgesOfSuperview()
         }
@@ -93,7 +102,10 @@ public class TableCell<V: Any>: ProtonView, TableCellObjC {
     
     // MARK: ProtonView
     public func getView() -> UIView {
-        return self.currentCell!
+        if let v = self.currentCell as? BridgedNSView {
+            return UIView(existingValue: v.getView() as! NSView)!
+        }
+        fatalError()
     }
 }
 

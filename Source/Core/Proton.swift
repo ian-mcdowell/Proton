@@ -14,33 +14,28 @@ public class Proton: UIWindow {
     public init(rootPage: Page) {
         super.init(frame: UIScreen.mainScreen().bounds)
     
-        self.makeKeyAndVisible()
-    
-        self.backgroundColor = UIColor.whiteColor()
-    
-        // embed root navigation controller if needed.
-        if let _ = rootPage as? Navigatable {
-            self.rootViewController = UINavigationController(rootViewController: rootPage)
-        } else {
-            self.rootViewController = rootPage
-        }
+        setup(rootPage)
     }
     #elseif os(OSX)
     public init(rootPage: Page, frame: CGRect) {
         super.init(frame: frame)
     
-        self.makeKeyAndVisible()
-        
+        setup(rootPage)
+    }
+    #endif
+    
+    private func setup(rootPage: Page) {
         self.backgroundColor = UIColor.whiteColor()
         
         // embed root navigation controller if needed.
-        if let _ = rootPage as? Navigatable {
-            self.rootViewController = UINavigationController(rootViewController: rootPage)
-        } else {
+//        if let _ = rootPage as? Navigatable {
+//            self.rootViewController = UINavigationController(rootViewController: rootPage)
+//        } else {
             self.rootViewController = rootPage
-        }
+//        }
+        
+        self.makeKeyAndVisible()
     }
-    #endif
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

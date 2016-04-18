@@ -12,6 +12,7 @@ public protocol ProtonView {
     func getView() -> UIView
 }
 
+
 internal struct LayoutPosition {
     enum LayoutPositionType {
         case None, Percent, Absolute
@@ -77,7 +78,7 @@ public class View<T>: ProtonView, AbsoluteLayoutView {
     #endif
     
     public init() {
-        fatalError("Failed to init a view. Programmer, please override the init method of this view and construct the 'view' variable in it.")
+        
     }
     
     internal init(view: T) {
@@ -130,12 +131,17 @@ public class View<T>: ProtonView, AbsoluteLayoutView {
     }
     
     
-    // MARK: ViewHolder
-    
+    // MARK: ProtonView
     public func getView() -> UIView {
-        return view as! UIView
+        #if os(OSX)
+            if let v = self.view as? BridgedNSView {
+                return UIView(existingValue: v.getView() as! NSView)!
+            }
+            fatalError()
+        #elseif os(iOS)
+            return self.view as! UIView
+        #endif
     }
-
 }
 
 

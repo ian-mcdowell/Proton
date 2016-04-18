@@ -63,37 +63,20 @@ public class SectionedTableData<T: Any> {
 /// Wrapper for `UITableView`, which handles all dataSource and delegate methods for you.
 public class Table<V: Any>: View<UITableView> {
     
-    private var tableManager = TableManager<V>()
+    private var tableManager = GenericTableManager<V>()
     
     
     public init(cells: [AnyClass], style: UITableViewStyle = .Plain) {
         super.init(view: UITableView(frame: CGRectZero, style: style))
         
         self.tableManager.cells = cells
-        #if os(iOS)
-            self.view.dataSource = self.tableManager
-            self.view.delegate = self.tableManager
+        self.view.dataSource = self.tableManager
+        self.view.delegate = self.tableManager
         
-            for cell in cells {
-                self.view.registerClass(BaseTableCell.self, forCellReuseIdentifier: NSStringFromClass(cell.self))
-            }
-        #elseif os(OSX)
-       
-//            self.scrollView = NSScrollView(frame: NSMakeRect(0, 0, 0, 0))
-//            self.scrollView.documentView = self.view
-//
-//            self.view.addTableColumn(NSTableColumn(identifier: "main"))
-//            self.view.headerView = nil
-//
-//            
-//            
-//            self.view.setDataSource(self.tableManager)
-//            self.view.setDelegate(self.tableManager)
-//            
-//            for cell in cells {
-//                self.view.makeViewWithIdentifier(NSStringFromClass(cell.self), owner: self.tableManager)
-//            }
-        #endif
+        for cell in cells {
+            self.view.registerClass(BaseTableCell.self, forCellReuseIdentifier: NSStringFromClass(cell.self))
+        }
+
     }
     
     public convenience init(data: TableData<V>, cells: [AnyClass], style: UITableViewStyle = .Plain) {
@@ -143,121 +126,68 @@ public class Table<V: Any>: View<UITableView> {
 }
 
 
+class TableManager: NSObject, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        fatalError()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-#if os(iOS)
-private class TableManager<V: Any>: NSObject, UITableViewDataSource, UITableViewDelegate {
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return nil
+    }
+}
+
+private class GenericTableManager<V: Any>: TableManager {
     
     var sections = [TableSection<V>]()
     var cells = [AnyClass]()
     
-    
-    @objc func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sections.count
     }
     
-    @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].items.count
     }
     
-    @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let model = sections[indexPath.section].items[indexPath.row]
         let type = getTypeOfModel(model, cells)
         
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(type), forIndexPath: indexPath) as! BaseTableCell
+
         cell.tableCell = type.init()
-        
+
         cell.layoutIfNeeded()
-        
+
         cell.tableCell?.configureObjC(model)
         
         return cell
     }
     
-    
-    @objc func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! BaseTableCell
         cell.tableCell?.tappedObjC(sections[indexPath.section].items[indexPath.row])
     }
     
-    @objc func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title
     }
-    
-
 }
-    
-#elseif os(OSX)
-    
-private class TableManager<V: Any>: NSObject, NSTableViewDataSource, NSTableViewDelegate {
-    var sections = [TableSection<V>]()
-    var cells = [AnyClass]()
-    
-    @objc func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        return totalRows()
-    }
-    
-    @objc func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
-        let model = getItemAtTotalRow(row)!
-        let type = getTypeOfModel(model, cells)
-        let identifier = NSStringFromClass(type)
-        
-        var cell = tableView.makeViewWithIdentifier(identifier, owner: self) as? BaseTableCell
-        
-        if cell == nil {
-            cell = BaseTableCell()
-            cell?.identifier = identifier
-        }
-        
-        cell?.tableCell = type.init()
-        
-        cell?.tableCell?.configureObjC(model)
-        
-        cell?.layout()
-        
-        return cell?.bridgedView
-    }
-    
-    @objc func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 44
-    }
-    
-    @objc func selectionShouldChangeInTableView(tableView: NSTableView) -> Bool {
-        let row = tableView.selectedRow
-        
-        if row != -1 {
-            let cell = tableView.viewAtColumn(0, row: row, makeIfNecessary: false) as? BaseTableCell
-            cell?.tableCell?.tappedObjC(getItemAtTotalRow(row)!)
-        }
-        
-        return true
-    }
-    
-
-    
-    private func totalRows() -> Int {
-        var total = 0
-        for section in sections {
-            total += section.items.count
-        }
-        return total
-    }
-    
-    private func getItemAtTotalRow(requestedRow: Int) -> V? {
-        var index = 0
-        for section in sections {
-            for row in section.items {
-                if index == requestedRow {
-                    return row
-                }
-                index += 1
-            }
-        }
-        return nil
-    }
-}
-#endif
 
 private func getTypeOfModel<V: Any>(model: V, _ cells: [AnyClass]) -> TableCell<V>.Type {
     var foundCount = 0

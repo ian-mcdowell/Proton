@@ -12,11 +12,17 @@ public class StackLayout: View<UIView>, Layout {
     
     private var stackView: UIStackView!
     
-    #if os(iOS)
-    public init(_ views: [ProtonView], direction: UILayoutConstraintAxis = .Vertical, distribution: UIStackViewDistribution = .Fill) {
-        self.views = views
-        
+    override init() {
+        self.views = [ProtonView]()
         super.init()
+        self.view = UIView(frame: CGRectZero)
+    }
+    
+    #if os(iOS)
+    public convenience init(_ views: [ProtonView], direction: UILayoutConstraintAxis = .Vertical, distribution: UIStackViewDistribution = .Fill) {
+        self.init()
+    
+        self.views = views
         
         stackView = UIStackView(arrangedSubviews: self.uiViews())
         stackView.axis = direction
@@ -33,25 +39,26 @@ public class StackLayout: View<UIView>, Layout {
         }
     }
     #elseif os(OSX)
-    public init(_ views: [ProtonView]) {
+    public convenience init(_ views: [ProtonView]) {
+        self.init()
+        
         self.views = views
         
-        super.init()
-        
+        stackView = UIStackView(arrangedSubviews: self.uiViews())
 //        stackView = UIStackView(views: self.uiViews())
 //        stackView.orientation = .Vertical
 //        stackView.distribution = .GravityAreas
 //        stackView.alignment = .Left
-//        
-//        self.view.backgroundColor = UIColor.whiteColor()
-//        
-//        self.view.addSubview(stackView)
-//        stackView.constrainToEdgesOfSuperview()
-//        
-//        // add width and height constraints
-//        for view in self.views {
-//            self.addSizeConstraintsToView(view, superview: self.view)
-//        }
+        
+        self.view.backgroundColor = UIColor.whiteColor()
+
+        self.view.addSubview(UIView(existingValue: stackView.bridgedView)!)
+        stackView.constrainToEdgesOfSuperview()
+        
+        // add width and height constraints
+        for view in self.views {
+            self.addSizeConstraintsToView(view, superview: self.view)
+        }
     }
     #endif
     

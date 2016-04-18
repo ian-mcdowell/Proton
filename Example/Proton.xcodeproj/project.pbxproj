@@ -10,6 +10,7 @@
 		225AB4D29210E458C26E7228 /* Pods_Proton_Example_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C920EC3AB00594BD019D66F8 /* Pods_Proton_Example_iOS.framework */; };
 		3C4006741CBEF2A600CB60DA /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FB1CBC3F31005E1D8D /* HomePage.swift */; };
 		3C4006821CBEF49500CB60DA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4006801CBEF49500CB60DA /* MainMenu.xib */; };
+		3C9697761CC027A2005E1FE7 /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0E1FD1CBC3F31005E1D8D /* WebViewPage.swift */; };
 		3CC980DF1CBEF1BF0088400E /* AppDelegate-OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC980DE1CBEF1BF0088400E /* AppDelegate-OSX.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate-iOS.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -483,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CC980DF1CBEF1BF0088400E /* AppDelegate-OSX.swift in Sources */,
+				3C9697761CC027A2005E1FE7 /* WebViewPage.swift in Sources */,
 				3C4006741CBEF2A600CB60DA /* HomePage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

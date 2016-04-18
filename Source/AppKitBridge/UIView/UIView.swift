@@ -79,6 +79,8 @@ public class BridgedUIView<T: NSView>: BridgedUIResponder<T> {
     
     /// Adds a view to the end of the receiver’s list of subviews.
     public func addSubview(view: UIView) {
+        // TODO: Make sure to not be doing this in production
+        view.bridgedView.translatesAutoresizingMaskIntoConstraints = false
         self.bridgedView.addSubview(view.bridgedView)
     }
     
@@ -93,6 +95,10 @@ public class BridgedUIView<T: NSView>: BridgedUIResponder<T> {
     
     
     // MARK: Layout subviews
+    
+    func layoutIfNeeded() {
+        self.bridgedView.layoutSubtreeIfNeeded()
+    }
     
     public class func requiresConstraintBasedLayout() -> Bool {
         return true

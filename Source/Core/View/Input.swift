@@ -17,7 +17,7 @@ public class Input: View<UITextField> {
         self.view.text = text
         self.view.placeholder = placeholder
         
-        self.view.delegate = self.inputManager
+        //self.view.delegate = self.inputManager
     }
     
     public func onReturn(fn: (field: UITextField) -> Void) -> Self {

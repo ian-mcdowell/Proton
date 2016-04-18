@@ -16,7 +16,7 @@ class HomePage: Page, Navigatable {
 //        ListItem(title: "Button", subtitle: "ButtonPage", page: ButtonPage.self),
         //ListItem(title: "DatePicker", subtitle: "DatePickerPage", page: DatePickerPage.self),
 //        ListItem(title: "ImageView", subtitle: "ImageViewPage", page: ImageViewPage.self),
-//        ListItem(title: "WebView", subtitle: "WebViewPage", page: WebViewPage.self)
+        ListItem(title: "WebView", subtitle: "WebViewPage", page: WebViewPage.self)
     ])
 
     override func layout() -> ProtonView {

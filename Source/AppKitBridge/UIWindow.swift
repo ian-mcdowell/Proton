@@ -41,6 +41,8 @@ public class BridgedUIWindow<T: NSWindow>: BridgedUIResponder<T> {
     
     public func makeKeyAndVisible() {
         self.bridgedView.makeKeyAndOrderFront(NSApp)
+        
+        debugPrint(self.bridgedView.frame)
     }
     
     
@@ -59,7 +61,7 @@ public class BridgedUIWindow<T: NSWindow>: BridgedUIResponder<T> {
             self.bridgedView.contentViewController = newValue?.bridgedView
         }
         get {
-            return nil//UINavigationController(existingValue: self.bridgedView.contentViewController)
+            return UIViewController(existingValue: self.bridgedView.contentViewController as? NSCustomViewController)
         }
     }
     
