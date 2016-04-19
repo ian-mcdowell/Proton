@@ -105,7 +105,14 @@ public class BridgedUIView<T: NSView>: BridgedUIResponder<T> {
 //        return self.bridgedView.requiresConstraintBasedLayout()
     }
     
-    dynamic var translatesAutoresizingMaskIntoConstraints: Bool = true
+    public var translatesAutoresizingMaskIntoConstraints: Bool {
+        set {
+            self.bridgedView.translatesAutoresizingMaskIntoConstraints = newValue
+        }
+        get {
+            return self.bridgedView.translatesAutoresizingMaskIntoConstraints
+        }
+    }
 
     
     

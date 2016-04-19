@@ -62,7 +62,7 @@ internal protocol AbsoluteLayoutView {
 
 /// Base class of View, which is a holder for a `UIView`. All other Proton views
 /// are subclasses of this.
-public class View<T>: ProtonView, AbsoluteLayoutView {
+public class View<T: AnyObject>: NSObject, ProtonView, AbsoluteLayoutView {
     
     var view: T!
     
@@ -77,11 +77,12 @@ public class View<T>: ProtonView, AbsoluteLayoutView {
     private var tapGestureRecognizer: UITapGestureRecognizer?
     #endif
     
-    public init() {
-        
+    public override init() {
+        super.init()
     }
     
     internal init(view: T) {
+        super.init()
         self.view = view
     }
     

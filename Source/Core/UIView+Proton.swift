@@ -104,9 +104,9 @@
     
         // retrieves the UIViewController that controls the view. This is done by looping up the UIResponder chain.
         var parentViewController: UIViewController? {
-            var parentResponder: NSResponder? = self.bridgedView
+            var parentResponder: UIResponder? = self.nextResponder()
             while parentResponder != nil {
-                parentResponder = parentResponder?.nextResponder
+                parentResponder = parentResponder?.nextResponder()
                 if let viewController = parentResponder as? NSCustomViewController {
                     return UIViewController(existingValue: viewController)
                 }

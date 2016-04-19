@@ -32,7 +32,7 @@ public protocol UITableViewDataSource {
 }
 
 public protocol UITableViewDelegate {
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
 }
 
 public class NSCustomTableView: NSTableView {
@@ -84,8 +84,9 @@ public class BridgedUITableView<T: NSCustomTableView>: BridgedUIScrollView<NSScr
     
     public var style: UITableViewStyle!
     
-    
+    private var classForIndexPath = [NSIndexPath: UITableViewCell]()
     private var sectionRowCounts = [Int: Int?]()
+    
     public func numberOfRowsInSection(_ section: Int) -> Int {
         if let val = sectionRowCounts[section], count = val {
             // we cached it and it wasnt nil
@@ -139,19 +140,24 @@ public class BridgedUITableView<T: NSCustomTableView>: BridgedUIScrollView<NSScr
     
     func dequeueReusableCellWithIdentifier(_ identifier: String, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = dequeueReusableCellWithIdentifier(identifier) {
+            self.classForIndexPath[indexPath] = cell
             return cell
         }
         let view = tableView.rowViewAtRow(rowFromIndexPath(indexPath), makeIfNecessary: true)
         if let cl = self.tableView.classForIdentifier[identifier] as? UITableViewCell {
-            return cl.dynamicType.init(existingValue: view)!
+            let cell = cl.dynamicType.init(existingValue: view)!
+            self.classForIndexPath[indexPath] = cell
+            return cell
         }
-        return UITableViewCell(existingValue: view)!
+        let cell = UITableViewCell(existingValue: view)!
+        self.classForIndexPath[indexPath] = cell
+        return cell
     }
     
     func dequeueReusableCellWithIdentifier(_ identifier: String) -> UITableViewCell? {
         let view = (self.tableView as! NSCustomTableView).makeViewWithIdentifier(identifier, owner: self.tableView)
         if let cl = self.tableView.classForIdentifier[identifier] {
-            return (cl as! BaseTableCell.Type).init(existingValue: view as? NSTableRowView)!
+            return cl.init(existingValue: view as? NSTableRowView)!
         }
         return UITableViewCell(existingValue: view as? NSTableRowView)
     }
@@ -164,6 +170,10 @@ public class BridgedUITableView<T: NSCustomTableView>: BridgedUIScrollView<NSScr
     // MARK: Cells and Sections
     
     func cellForRowAtIndexPath(_ indexPath: NSIndexPath) -> UITableViewCell? {
+        if let cl = self.classForIndexPath[indexPath] {
+            cl.bridgedView = tableView.rowViewAtRow(rowFromIndexPath(indexPath), makeIfNecessary: false)
+            return cl
+        }
         return UITableViewCell(existingValue: tableView.rowViewAtRow(rowFromIndexPath(indexPath), makeIfNecessary: false))
     }
     
@@ -197,7 +207,8 @@ public class BridgedUITableView<T: NSCustomTableView>: BridgedUIScrollView<NSScr
     // Helpers
     
     private func clearData() {
-        sectionRowCounts.removeAll(keepCapacity: false)
+        classForIndexPath.removeAll()
+        sectionRowCounts.removeAll()
         sectionCount = nil
     }
     
@@ -253,7 +264,7 @@ private class NSTableManager: NSObject, NSTableViewDataSource, NSTableViewDelega
         let row = tableView.selectedRow
         
         if row != -1 {
-            
+            delegate?.tableView(bridgedTableView, didSelectRowAtIndexPath: getSectionedIndexPathFromRow(row)!)
         }
         
         return true

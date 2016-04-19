@@ -58,7 +58,16 @@ public protocol BridgedNSView {
 
 public class BridgedView<T: NSObject>: NSObject, BridgedNSView {
     
-    var bridgedView: T!
+    var bridgedView: T! {
+        willSet {
+            if bridgedView != nil {
+                bridgedView.viewBridge = nil
+            }
+        }
+        didSet {
+            bridgedView.viewBridge = self
+        }
+    }
     
     func createView() -> T {
         return T()
@@ -67,18 +76,26 @@ public class BridgedView<T: NSObject>: NSObject, BridgedNSView {
     public override init() {
         super.init()
         
-        self.bridgedView = self.createView()
+        self.setBridge(self.createView())
     }
     
     public init(existingValue: T) {
         super.init()
         
-        self.bridgedView = existingValue
+        self.setBridge(existingValue)
     }
     public init?(existingValue: T?) {
         super.init()
         
-        self.bridgedView = existingValue
+        if existingValue == nil {
+            return nil
+        }
+        
+        self.setBridge(existingValue!)
+    }
+    
+    private func setBridge(value: T) {
+        self.bridgedView = value
     }
     
     public func getView() -> NSObject {
@@ -87,3 +104,21 @@ public class BridgedView<T: NSObject>: NSObject, BridgedNSView {
 
 }
 
+
+internal extension NSObject {
+    private struct AssociatedKeys {
+        static var ViewBridge = "viewBridge"
+    }
+    
+    var viewBridge: AnyObject? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.ViewBridge)
+        }
+        
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(self, &AssociatedKeys.ViewBridge, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }
+}

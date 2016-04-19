@@ -19,6 +19,9 @@ public class BridgedUIResponder<T: NSResponder>: BridgedView<T> {
     }
     
     public func nextResponder() -> UIResponder? {
+//        if let responder = self.bridgedView.nextResponder?.viewBridge as? UIResponder {
+//            return responder
+//        }
         return UIResponder(existingValue: self.bridgedView.nextResponder)
     }
 
