@@ -63,8 +63,8 @@ public class StackLayout: View<UIView>, Layout {
     #endif
     
     private func uiViews() -> [UIView] {
-        return self.views.map({ (view) -> UIView in
+        return self.views.map { view -> UIView in
             return view.getView()
-        })
+        }
     }
 }

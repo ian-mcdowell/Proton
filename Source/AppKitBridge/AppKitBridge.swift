@@ -52,7 +52,7 @@ public enum UITableViewCellStyle {
 }
 
 
-public protocol BridgedNSView {
+public protocol BridgedNSView: class {
     func getView() -> NSObject
 }
 
@@ -65,7 +65,7 @@ public class BridgedView<T: NSObject>: NSObject, BridgedNSView {
             }
         }
         didSet {
-            bridgedView.viewBridge = self
+//            bridgedView.viewBridge = self
         }
     }
     
@@ -110,9 +110,9 @@ internal extension NSObject {
         static var ViewBridge = "viewBridge"
     }
     
-    var viewBridge: AnyObject? {
+    var viewBridge: BridgedNSView? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.ViewBridge)
+            return objc_getAssociatedObject(self, &AssociatedKeys.ViewBridge) as? BridgedNSView
         }
         
         set {

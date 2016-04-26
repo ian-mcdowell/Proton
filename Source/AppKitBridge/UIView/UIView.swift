@@ -101,8 +101,8 @@ public class BridgedUIView<T: NSView>: BridgedUIResponder<T> {
     }
     
     public class func requiresConstraintBasedLayout() -> Bool {
-        return true
-//        return self.bridgedView.requiresConstraintBasedLayout()
+//        return true
+        return T.requiresConstraintBasedLayout()
     }
     
     public var translatesAutoresizingMaskIntoConstraints: Bool {
