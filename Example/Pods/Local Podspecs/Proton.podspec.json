@@ -22,6 +22,9 @@
   },
   "osx": {
     "source_files": "Source/{Core,AppKitBridge}/**/*",
-    "frameworks": "AppKit"
+    "public_header_files": "Source/AppKitBridge/UXKit.h",
+    "private_header_files": "Source/AppKitBridge/Headers/*.h",
+    "frameworks": "AppKit",
+    "vendored_frameworks": "UXKit.framework"
   }
 }

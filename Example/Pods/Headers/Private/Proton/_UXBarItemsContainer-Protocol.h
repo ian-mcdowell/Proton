@@ -1,0 +1,1 @@
+../../../../../Source/AppKitBridge/Headers/_UXBarItemsContainer-Protocol.h

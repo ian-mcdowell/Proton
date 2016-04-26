@@ -9,12 +9,8 @@
 
 internal class BaseTableCell: UITableViewCell {
     
-    override required init() {
-        super.init()
-    }
-    
-    override required init?(existingValue: NSTableRowView?) {
-        super.init(existingValue: existingValue)
+    override required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     var tableCell: TableCellObjC? {
@@ -102,10 +98,7 @@ public class TableCell<V: Any>: ProtonView, TableCellObjC {
     
     // MARK: ProtonView
     public func getView() -> UIView {
-        if let v = self.currentCell as? BridgedNSView {
-            return UIView(existingValue: v.getView() as! NSView)!
-        }
-        fatalError()
+        return self.currentCell!
     }
 }
 

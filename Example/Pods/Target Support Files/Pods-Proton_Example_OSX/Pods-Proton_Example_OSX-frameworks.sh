@@ -84,8 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${PODS_ROOT}/../../UXKit.framework"
   install_framework "Pods-Proton_Example_OSX/Proton.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${PODS_ROOT}/../../UXKit.framework"
   install_framework "Pods-Proton_Example_OSX/Proton.framework"
 fi

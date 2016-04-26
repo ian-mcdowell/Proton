@@ -101,8 +101,8 @@ public class View<T: AnyObject>: ProtonView, AbsoluteLayoutView {
         
         self.tapGestureRecognizer = UITapGestureRecognizer(target: self.clickHandler, action: #selector(self.clickHandler.handleAction))
         
-        self.view.addGestureRecognizer(self.tapGestureRecognizer!)
-        self.view.userInteractionEnabled = true
+        (self.view as? UIView)?.addGestureRecognizer(self.tapGestureRecognizer!)
+        (self.view as? UIView)?.userInteractionEnabled = true
         
         return self
     }

@@ -12,7 +12,7 @@ public class Page: UIViewController {
     
     private var lastLayout: ProtonView!
     
-    required public init() {
+    required public override init() {
         super.init(nibName: nil, bundle: nil)
     }
     

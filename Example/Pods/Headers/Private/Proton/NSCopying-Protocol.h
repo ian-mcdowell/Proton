@@ -1,0 +1,1 @@
+../../../../../Source/AppKitBridge/Headers/NSCopying-Protocol.h

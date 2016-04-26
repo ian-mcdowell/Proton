@@ -14,13 +14,8 @@ public class Button: View<UIButton> {
     public init(text: String? = nil, image: UIImage? = nil, type: UIButtonType = .Custom) {
         super.init()
         
-        #if os(iOS)
-            view = UIButton(type: type)
-            view.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        #elseif os(OSX)
-            view.setButtonType(.MomentaryLightButton)
-
-        #endif
+        view = UIButton(type: type)
+        view.setTitleColor(UIColor.blackColor(), forState: .Normal)
         
         view.setTitle(text, forState: .Normal)
         view.setImage(image, forState: .Normal)

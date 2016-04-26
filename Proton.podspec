@@ -17,8 +17,11 @@ Pod::Spec.new do |s|
 
   s.ios.source_files = 'Source/Core/**/*'
   s.osx.source_files = 'Source/{Core,AppKitBridge}/**/*'
+  s.osx.public_header_files = 'Source/AppKitBridge/UXKit.h'
+  s.osx.private_header_files = 'Source/AppKitBridge/Headers/*.h'
 
   s.ios.frameworks = 'UIKit'
   s.osx.frameworks = 'AppKit'
+  s.osx.vendored_frameworks = 'UXKit.framework'
 
 end
