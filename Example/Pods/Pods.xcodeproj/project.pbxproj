@@ -72,6 +72,7 @@
 		3C9697751CC021D7005E1FE7 /* UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9697741CC021D7005E1FE7 /* UINib.swift */; };
 		3C9697771CC027AE005E1FE7 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254766BA10FB5D5FA6A1ED4B3AE78527 /* Input.swift */; };
 		3C9697781CC027D3005E1FE7 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2BAFBD9D74A0A15D728430461B83C /* WebView.swift */; };
+		3CC82E3E1CCFDD5900C3E94A /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC82E3D1CCFDD5900C3E94A /* UIToolbar.swift */; };
 		3CCA95851CC56FDC003B7034 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA95831CC56F64003B7034 /* UIStackView.swift */; };
 		3D1BB98DEA422D8F173613EC715488B9 /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4367C4488925AB67CC39819E11B023 /* PostNotification.swift */; };
 		3E8F3721C8B19D1CE6986D886AE07AA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509A38BBF9FB76FDD0A10939DA80DE5F /* Foundation.framework */; };
@@ -362,6 +363,7 @@
 		3C4007371CBF7F9D00CB60DA /* UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		3C9697721CC017F6005E1FE7 /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewCell.swift; path = UIView/UITableViewCell.swift; sourceTree = "<group>"; };
 		3C9697741CC021D7005E1FE7 /* UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINib.swift; sourceTree = "<group>"; };
+		3CC82E3D1CCFDD5900C3E94A /* UIToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolbar.swift; sourceTree = "<group>"; };
 		3CCA95831CC56F64003B7034 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStackView.swift; path = UIView/UIStackView.swift; sourceTree = "<group>"; };
 		3F0CB12D4FA3F8A1A7B7BFD34CC73DAD /* Pods_Proton_Example_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proton_Example_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BBF6C60F7E659963D4D93CF9E78A8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -1025,6 +1027,7 @@
 				3C4007351CBF7DFB00CB60DA /* UIImage.swift */,
 				3C4007371CBF7F9D00CB60DA /* UIWindow.swift */,
 				3C9697741CC021D7005E1FE7 /* UINib.swift */,
+				3CC82E3D1CCFDD5900C3E94A /* UIToolbar.swift */,
 			);
 			path = AppKitBridge;
 			sourceTree = "<group>";
@@ -1508,6 +1511,7 @@
 				274C7CEDAFA710C9B76123CCEEFE3D08 /* Hairline.swift in Sources */,
 				3C40072D1CBF7D5600CB60DA /* UIScrollView.swift in Sources */,
 				69F839687ADFF30B13F9D2FA667B9E61 /* Layout.swift in Sources */,
+				3CC82E3E1CCFDD5900C3E94A /* UIToolbar.swift in Sources */,
 				3C09200D1CBF919F0093C4C5 /* Label.swift in Sources */,
 				3C09200B1CBF91710093C4C5 /* Table.swift in Sources */,
 				3C4007321CBF7D6E00CB60DA /* UIColor.swift in Sources */,

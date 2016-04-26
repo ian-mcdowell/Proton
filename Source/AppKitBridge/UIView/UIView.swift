@@ -16,6 +16,10 @@ public class BridgedUIView<T: NSView>: BridgedUIResponder<T> {
         super.init(existingValue: existingValue)
     }
     
+    public convenience override init() {
+        self.init(frame: CGRectZero)
+    }
+    
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
     public init(frame: CGRect) {
         super.init()
@@ -74,6 +78,20 @@ public class BridgedUIView<T: NSView>: BridgedUIResponder<T> {
     public var superview: UIView? {
         get {
             return UIView(existingValue: bridgedView.superview)
+        }
+    }
+    
+    public var subviews: [UIView] {
+        get {
+            return bridgedView.subviews.map({ (view) -> UIView in
+                return UIView(existingValue: view)!
+            })
+        }
+    }
+    
+    public var window: UIWindow? {
+        get {
+            return UIWindow(existingValue: self.bridgedView.window)
         }
     }
     

@@ -19,6 +19,12 @@ public class BridgedUIWindow<T: NSWindow>: BridgedUIResponder<T> {
     }
     
     // MARK: Internal
+    
+    internal override init?(existingValue: T?) {
+        super.init(existingValue: existingValue)
+    }
+    
+    
     override func createView() -> T {
         let window = NSWindow(contentRect: NSMakeRect(0, 0, width, height), styleMask: NSTitledWindowMask | NSClosableWindowMask | NSResizableWindowMask, backing: .Buffered, defer: false)
         self.centerWindow(window)
@@ -47,7 +53,7 @@ public class BridgedUIWindow<T: NSWindow>: BridgedUIResponder<T> {
     
     
     /// The view’s background color.
-    var backgroundColor: UIColor? {
+    public var backgroundColor: UIColor? {
         set {
             self.bridgedView.backgroundColor = newValue?.bridgedView
         }
@@ -56,12 +62,22 @@ public class BridgedUIWindow<T: NSWindow>: BridgedUIResponder<T> {
         }
     }
     
-    var rootViewController: UIViewController? {
+    public var rootViewController: UIViewController? {
         set {
             self.bridgedView.contentViewController = newValue?.bridgedView
         }
         get {
             return UIViewController(existingValue: self.bridgedView.contentViewController as? NSCustomViewController)
+        }
+    }
+    
+    
+    public var toolbar: UIToolbar? {
+        get {
+            return self.bridgedView.toolbar?.viewBridge as! UIToolbar
+        }
+        set {
+            self.bridgedView.toolbar = newValue?.bridgedView
         }
     }
     

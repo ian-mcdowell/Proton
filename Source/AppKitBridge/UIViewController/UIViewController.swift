@@ -43,11 +43,21 @@ var token: dispatch_once_t = 0
 
 public protocol NSLoadView {
     func loadView()
+    func viewDidLoad()
+    func viewDidAppear()
 }
 public class NSCustomViewController: NSViewController {
     
     internal var bridgedController: NSLoadView?
     
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        bridgedController?.viewDidLoad()
+    }
+    public override func viewDidAppear() {
+        super.viewDidAppear()
+        bridgedController?.viewDidAppear()
+    }
     public override func loadView() {
         bridgedController?.loadView()
     }
@@ -84,6 +94,8 @@ public class BridgedUIViewController<T: NSCustomViewController>: BridgedUIRespon
         }
     }
     
+    public var navigationItem: UINavigationItem = UINavigationItem(title: nil)
+    
     public var title: String? {
         set {
             self.bridgedView.title = newValue
@@ -98,11 +110,11 @@ public class BridgedUIViewController<T: NSCustomViewController>: BridgedUIRespon
     }
     
     public func viewDidLoad() {
-        self.bridgedView.viewDidLoad()
+        
     }
     
     public func viewDidAppear() {
-        self.bridgedView.viewDidAppear()
+        
     }
     
 }

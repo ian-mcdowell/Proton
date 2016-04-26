@@ -9,6 +9,8 @@
 public typealias UIColor = BridgedUIColor<NSColor>
 public typealias UIImage = BridgedUIImage<NSImage>
 public typealias UINib = BridgedUINib<NSNib>
+public typealias UIToolbar = BridgedUIToolbar<NSToolbar>
+public typealias UINavigationBar = BridgedUINavigationBar<NSToolbar>
 
 public typealias UIResponder = BridgedUIResponder<NSResponder>
     public typealias UIWindow = BridgedUIWindow<NSWindow>
